@@ -1,5 +1,5 @@
 <template>
-  <div class="app-container" style="padding-left: 30px">
+  <div class="app-container" style="padding-left: 30px; margin-right: 50px">
     <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch">
       <div class="search-input">
         <el-form-item label="角色名称" prop="roleName">
@@ -115,8 +115,8 @@
       <el-table-column label="角色编号" prop="roleId" width="120" />
       <el-table-column label="角色名称" prop="roleName" :show-overflow-tooltip="true" width="150" />
       <el-table-column label="权限标识" prop="roleKey" :show-overflow-tooltip="true" width="150" />
-      <el-table-column label="角色优先级" prop="roleSort" width="100" />
-      <el-table-column label="状态" align="center" width="100">
+      <el-table-column label="角色优先级" prop="roleSort" width="120" />
+      <el-table-column label="状态" align="center" width="120">
         <template slot-scope="scope">
           <el-switch
             v-model="scope.row.status"

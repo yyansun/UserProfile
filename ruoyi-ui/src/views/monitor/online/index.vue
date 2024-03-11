@@ -1,5 +1,5 @@
 <template>
-  <div class="app-container">
+  <div class="app-container" style="margin-left: 30px; margin-right: 50px">
 <!--    <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" label-width="68px">-->
 <!--      <el-form-item label="登录地址" prop="ipaddr">-->
 <!--        <el-input-->
@@ -101,14 +101,14 @@
           <span>{{(pageNum - 1) * pageSize + scope.$index + 1}}</span>
         </template>
       </el-table-column>
-      <el-table-column label="用户名称" align="center" prop="tokenId" :show-overflow-tooltip="true" />
-      <el-table-column label="性别" align="center" prop="userName" :show-overflow-tooltip="true" />
-      <el-table-column label="生日" align="center" prop="deptName" />
-      <el-table-column label="手机号码" align="center" prop="browser" />
-      <el-table-column label="职业" align="center" prop="deptName" />
-      <el-table-column label="政治面貌" align="center" prop="ipaddr" :show-overflow-tooltip="true" />
-      <el-table-column label="所属地区" align="center" prop="loginLocation" :show-overflow-tooltip="true" />
-      <el-table-column label="婚姻状况" align="center" prop="browser" />
+      <el-table-column label="用户名称" align="center" prop="userName" :show-overflow-tooltip="true" />
+      <el-table-column label="性别" align="center" prop="gender" :show-overflow-tooltip="true" />
+      <el-table-column label="生日" align="center" prop="birthday" />
+      <el-table-column label="手机号码" align="center" prop="telephone" />
+      <el-table-column label="职业" align="center" prop="job" />
+      <el-table-column label="政治面貌" align="center" prop="politicalFace" :show-overflow-tooltip="true" />
+      <el-table-column label="所属地区" align="center" prop="region" :show-overflow-tooltip="true" />
+      <el-table-column label="婚姻状况" align="center" prop="marriage" />
 
 <!--      <el-table-column label="手机号码" align="center" prop="os" />-->
 <!--        <template slot-scope="scope">-->
