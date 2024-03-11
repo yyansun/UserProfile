@@ -1,5 +1,5 @@
 package com.ruoyi.system.domain;
-
+//ver1 by becky
 /**
  * 当前在线会话
  * 
