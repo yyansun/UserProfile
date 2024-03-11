@@ -2,7 +2,7 @@
   <div class="app-container">
     <el-row :gutter="20">
       <el-col :span="6" :xs="24">
-        <el-card class="box-card">
+        <el-card class="box-card" style="width: 400px; margin-left: 100px">
           <div slot="header" class="clearfix">
             <span>个人信息</span>
           </div>
@@ -23,10 +23,10 @@
                 <svg-icon icon-class="email" />用户邮箱
                 <div class="pull-right">{{ user.email }}</div>
               </li>
-              <li class="list-group-item">
-                <svg-icon icon-class="tree" />所属部门
-                <div class="pull-right" v-if="user.dept">{{ user.dept.deptName }} / {{ postGroup }}</div>
-              </li>
+<!--              <li class="list-group-item">-->
+<!--                <svg-icon icon-class="tree" />所属部门-->
+<!--                <div class="pull-right" v-if="user.dept">{{ user.dept.deptName }} / {{ postGroup }}</div>-->
+<!--              </li>-->
               <li class="list-group-item">
                 <svg-icon icon-class="peoples" />所属角色
                 <div class="pull-right">{{ roleGroup }}</div>
@@ -40,7 +40,7 @@
         </el-card>
       </el-col>
       <el-col :span="18" :xs="24">
-        <el-card>
+        <el-card style="width: 400px; margin-left: 180px">
           <div slot="header" class="clearfix">
             <span>基本资料</span>
           </div>

@@ -1,7 +1,17 @@
 <template>
+
   <div class="login">
+    <div>
+      <div>
+        <img src="../assets/images/desc.png" style="width:400px">
+      </div>
+      <div>
+        <img src="../assets/images/shop1.svg" style="width:400px">
+        <img src="../assets/images/shop2.svg" style="width:400px">
+      </div>
+    </div>
     <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form">
-      <h3 class="title">大数据----电商用户画像分析系统</h3>
+      <h3 class="title">电商用户画像分析系统</h3>
       <el-form-item prop="username">
         <el-input
           v-model="loginForm.username"
@@ -55,9 +65,9 @@
       </el-form-item>
     </el-form>
     <!--  底部  -->
-    <div class="el-login-footer">
-      <span>UUS</span>
-    </div>
+<!--    <div class="el-login-footer">-->
+<!--      <span>UUS</span>-->
+<!--    </div>-->
   </div>
 </template>
 
@@ -159,61 +169,66 @@ export default {
 .login {
   display: flex;
   justify-content: center;
+  //padding: 0px 200px 0px 0px;
   align-items: center;
   height: 100%;
-  background-image: url("../assets/images/login-background.jpg");
+  background-image: url("../assets/images/login-bg.png");
   background-size: cover;
 }
 .title {
   margin: 0px auto 30px auto;
   text-align: center;
-  color: #707070;
+  color: rgb(26, 149, 226);
+  font-size: 24px;
 }
 
 .login-form {
-  border-radius: 6px;
-  background: #ffffff;
-  width: 400px;
-  padding: 25px 25px 5px 25px;
+  border-radius: 4px;
+  background: rgb(255, 255, 255);
+  width: 420px;
+  padding: 30px 30px 10px 30px;
+  border: 2px solid white;
+  box-shadow: 0px 0px  10px rgba(0, 0, 0, 0.1);
   .el-input {
-    height: 38px;
+    height: 45px;
     input {
-      height: 38px;
+      height: 45px;
     }
   }
   .input-icon {
     height: 39px;
     width: 14px;
-    margin-left: 2px;
+    margin-left: 4px;
   }
 }
-.login-tip {
-  font-size: 13px;
-  text-align: center;
-  color: #bfbfbf;
-}
+//.login-tip {
+//  font-size: 18px;
+//  text-align: center;
+//  color: red;
+//}
 .login-code {
   width: 33%;
-  height: 38px;
+  height: 45px;
   float: right;
   img {
     cursor: pointer;
     vertical-align: middle;
   }
 }
-.el-login-footer {
-  height: 40px;
-  line-height: 40px;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
-  color: #fff;
-  font-family: Arial;
-  font-size: 12px;
-  letter-spacing: 1px;
-}
+// 页脚
+//.el-login-footer {
+//  height: 40px;
+//  line-height: 40px;
+//  position: fixed;
+//  bottom: 0;
+//  width: 100%;
+//  text-align: center;
+//  color: #fff;
+//  font-family: Arial;
+//  font-size: 12px;
+//  letter-spacing: 1px;
+//}
 .login-code-img {
-  height: 38px;
+  height: 45px;
 }
 </style>
