@@ -21,76 +21,52 @@
 <!--        <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>-->
 <!--        <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>-->
 <!--      </el-form-item>-->
-
 <!--    </el-form>-->
-    <div>
-      性别
-      <el-button>男</el-button>
-      <el-button>女</el-button>
+    <div class="container">
+      <div class="left-area">
+        <!-- 左侧区域的内容 -->
+        <span v-html="'性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别&nbsp;&nbsp;&nbsp;'" class="custom-text"></span>
+        <el-button @click="handleCilck" type="primary">男</el-button>
+        <el-button @click="handleCilck" type="primary">女</el-button>
+      </div>
+      <div class="right-area">
+        <span v-html="'职&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;业&nbsp;&nbsp;&nbsp;'" class="custom-text"></span>
+        <el-button @click="handleCilck" type="primary">学生</el-button>
+        <el-button @click="handleCilck" type="primary">公务员</el-button>
+        <el-button @click="handleCilck" type="primary">军人</el-button>
+        <el-button @click="handleCilck" type="primary">警察</el-button>
+        <el-button @click="handleCilck" type="primary">教师</el-button>
+        <el-button @click="handleCilck" type="primary">白领</el-button>
+      </div>
     </div>
-    <div>
-      政治面貌
-      <el-button>党员</el-button>
-      <el-button>群众</el-button>
-      <el-button>无党派人士</el-button>
+    <br>
+    <div class="container">
+      <div class="left-area">
+        <span v-html="'政治面貌&nbsp;&nbsp;&nbsp;'" class="custom-text"></span>
+        <el-button @click="handleCilck" type="primary">党员</el-button>
+        <el-button @click="handleCilck" type="primary">群众</el-button>
+        <el-button @click="handleCilck" type="primary">无党派人士</el-button>
+      </div>
+      <div class="right-area">
+        <span v-html="'所属地区&nbsp;&nbsp;&nbsp;'" class="custom-text"></span>
+        <el-button @click="handleCilck" type="primary">中国大陆</el-button>
+        <el-button @click="handleCilck" type="primary">中国香港</el-button>
+        <el-button @click="handleCilck" type="primary">中国澳门</el-button>
+        <el-button @click="handleCilck" type="primary">中国台湾</el-button>
+      </div>
     </div>
-    <div>
-      职业
-      <el-button>学生</el-button>
-      <el-button>公务员</el-button>
-      <el-button>军人</el-button>
-      <el-button>警察</el-button>
-      <el-button>教师</el-button>
-      <el-button>白领</el-button>
+    <br>
+    <div class="container">
+      <div class="left-area">
+        <span v-html="'婚姻状况&nbsp;&nbsp;&nbsp;'" class="custom-text"></span>
+        <el-button @click="handleCilck" type="primary">未婚</el-button>
+        <el-button @click="handleCilck" type="primary">已婚</el-button>
+        <el-button @click="handleCilck" type="primary">离异</el-button>
+      </div>
     </div>
-    <div>
-      婚姻状况
-      <el-button>未婚</el-button>
-      <el-button>已婚</el-button>
-      <el-button>离异</el-button>
-    </div>
-    <div>
-      所属地区
-      <el-button>中国大陆</el-button>
-      <el-button>中国香港</el-button>
-      <el-button>中国澳门</el-button>
-      <el-button>中国台湾</el-button>
-    </div>
-    <el-col :span="1.5">
-      <el-button
-        type="primary"
-        plain
-        icon="el-icon-plus"
-        style="margin-left: 20px; font-size: 16px"
-        size="mini"
-        @click="handleAdd"
-        v-hasPermi="['system:role:add']"
-      >添加</el-button>
-    </el-col>
-    <el-col :span="1.5">
-      <el-button
-        type="success"
-        plain
-        icon="el-icon-edit"
-        style="margin-left: 20px; font-size: 16px"
-        size="mini"
-        :disabled="single"
-        @click="handleUpdate"
-        v-hasPermi="['system:role:edit']"
-      >修改</el-button>
-    </el-col>
-    <el-col :span="1.5">
-      <el-button
-        type="danger"
-        plain
-        icon="el-icon-delete"
-        style="margin-left: 20px; font-size:16px"
-        size="mini"
-        :disabled="multiple"
-        @click="handleDelete"
-        v-hasPermi="['system:role:remove']"
-      >删除</el-button>
-      </el-col>
+    <br>
+    <div class="container-below">
+      <div class="left-table">
     <el-table
       v-loading="loading"
       :data="list.slice((pageNum-1)*pageSize,pageNum*pageSize)"
@@ -128,9 +104,55 @@
 <!--      </el-table-column>-->
     </el-table>
 
-    <pagination v-show="total>0" :total="total" :page.sync="pageNum" :limit.sync="pageSize" />
-  </div>
+        <pagination v-show="total>0" :total="total" :page.sync="pageNum" :limit.sync="pageSize" />
+      </div>
+      <div class="right-pic">
+        一个饼图
+      </div>
+    </div>
+    </div>
 </template>
+
+<style>
+.container {
+  display: flex;
+}
+
+.left-area {
+  flex: 3; /* 左侧区域占据可用空间的40% */
+}
+
+.right-area {
+  flex: 7; /* 右侧区域占据可用空间的60% */
+}
+
+.custom-text {
+  font-size: 16px;
+  font-family: "Microsoft YaHei";
+}
+
+.el-button--primary {
+  background-color: rgb(232, 244, 255) !important;
+  color: black;
+}
+.el-button--primary:focus,
+.el-button--primary:hover {
+  background-color: rgb(64, 158, 255) !important;
+}
+
+.container-below {
+  display:flex;
+}
+
+.left-table {
+  flex: 6;
+}
+
+.right-pic{
+  flex: 4;
+}
+</style>
+
 
 <script>
 import { list, forceLogout } from "@/api/monitor/online";
