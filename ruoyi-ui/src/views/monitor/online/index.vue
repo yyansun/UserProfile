@@ -1,33 +1,29 @@
 <template>
   <div class="app-container" style="margin-left: 30px; margin-right: 50px">
-<!--    <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" label-width="68px">-->
-<!--      <el-form-item label="登录地址" prop="ipaddr">-->
-<!--        <el-input-->
-<!--          v-model="queryParams.ipaddr"-->
-<!--          placeholder="请输入登录地址"-->
-<!--          clearable-->
-<!--          @keyup.enter.native="handleQuery"-->
-<!--        />-->
-<!--      </el-form-item>-->
-<!--      <el-form-item label="用户名称" prop="userName">-->
-<!--        <el-input-->
-<!--          v-model="queryParams.userName"-->
-<!--          placeholder="请输入用户名称"-->
-<!--          clearable-->
-<!--          @keyup.enter.native="handleQuery"-->
-<!--        />-->
-<!--      </el-form-item>-->
-<!--      <el-form-item>-->
-<!--        <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>-->
-<!--        <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>-->
-<!--      </el-form-item>-->
-<!--    </el-form>-->
     <div class="container">
       <div class="left-area">
         <!-- 左侧区域的内容 -->
         <span v-html="'性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别&nbsp;&nbsp;&nbsp;'" class="custom-text"></span>
-        <el-button @click="handleCilck" type="primary">男</el-button>
+        <el-button @click="fetchData" type="primary">男</el-button>
         <el-button @click="handleCilck" type="primary">女</el-button>
+      </div>
+      <div class="right-area">
+        <span v-html="'年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;龄&nbsp;&nbsp;&nbsp;'" class="custom-text"></span>
+        <el-button @click="handleCilck" type="primary">70后</el-button>
+        <el-button @click="handleCilck" type="primary">80后</el-button>
+        <el-button @click="handleCilck" type="primary">90后</el-button>
+        <el-button @click="handleCilck" type="primary">00后</el-button>
+        <el-button @click="handleCilck" type="primary">10后</el-button>
+        <el-button @click="handleCilck" type="primary">20后</el-button>
+      </div>
+    </div>
+    <br>
+    <div class="container">
+      <div class="left-area">
+        <span v-html="'婚姻状况&nbsp;&nbsp;&nbsp;'" class="custom-text"></span>
+        <el-button @click="handleCilck" type="primary">未婚</el-button>
+        <el-button @click="handleCilck" type="primary">已婚</el-button>
+        <el-button @click="handleCilck" type="primary">离异</el-button>
       </div>
       <div class="right-area">
         <span v-html="'职&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;业&nbsp;&nbsp;&nbsp;'" class="custom-text"></span>
@@ -56,15 +52,6 @@
       </div>
     </div>
     <br>
-    <div class="container">
-      <div class="left-area">
-        <span v-html="'婚姻状况&nbsp;&nbsp;&nbsp;'" class="custom-text"></span>
-        <el-button @click="handleCilck" type="primary">未婚</el-button>
-        <el-button @click="handleCilck" type="primary">已婚</el-button>
-        <el-button @click="handleCilck" type="primary">离异</el-button>
-      </div>
-    </div>
-    <br>
     <div class="container-below">
       <div class="left-table">
     <el-table
@@ -85,25 +72,7 @@
       <el-table-column label="政治面貌" align="center" prop="politicalFace" :show-overflow-tooltip="true" />
       <el-table-column label="所属地区" align="center" prop="region" :show-overflow-tooltip="true" />
       <el-table-column label="婚姻状况" align="center" prop="marriage" />
-
-<!--      <el-table-column label="手机号码" align="center" prop="os" />-->
-<!--        <template slot-scope="scope">-->
-<!--          <span>{{ parseTime(scope.row.loginTime) }}</span>-->
-<!--        </template>-->
-<!--      </el-table-column>-->
-<!--      <el-table-column label="操作" align="center" class-name="small-padding fixed-width">-->
-<!--        <template slot-scope="scope">-->
-<!--          <el-button-->
-<!--            size="mini"-->
-<!--            type="text"-->
-<!--            icon="el-icon-delete"-->
-<!--            @click="handleForceLogout(scope.row)"-->
-<!--            v-hasPermi="['monitor:online:forceLogout']"-->
-<!--          >强退</el-button>-->
-<!--        </template>-->
-<!--      </el-table-column>-->
     </el-table>
-
         <pagination v-show="total>0" :total="total" :page.sync="pageNum" :limit.sync="pageSize" />
       </div>
       <div class="right-pic">
@@ -171,7 +140,7 @@ export default {
       pageSize: 10,
       // 查询参数
       queryParams: {
-        ipaddr: undefined,
+        ipaddr: undefined, // syyyyyyyyyyyyyyyyyyyyyyyyyyy
         userName: undefined
       }
     };
@@ -180,6 +149,16 @@ export default {
     this.getList();
   },
   methods: {
+    /** 查询功能 */
+    fetchData() {
+      this.loading = true;
+      list(this.queryParams).then(response => {
+        this.list = response.rows;
+        this.total = response.total;
+        this.loading = false;
+      });
+    },
+
     /** 查询登录日志列表 */
     getList() {
       this.loading = true;
