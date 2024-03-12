@@ -24,14 +24,32 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectLogininforList" parameterType="SysLogininfor" resultMap="SysLogininforResult">
 		select info_id, user_name, ipaddr, login_location, browser, os, status, msg, login_time from sys_logininfor
 		<where>
+			<!--gender-->
 			<if test="ipaddr != null and ipaddr != ''">
 				AND ipaddr like concat('%', #{ipaddr}, '%')
 			</if>
+			<!--memberRankId-->
 			<if test="status != null and status != ''">
 				AND status = #{status}
 			</if>
-			<if test="userName != null and userName != ''">
-				AND user_name like concat('%', #{userName}, '%')
+			<!--job-->
+			<if test="loginLocation != null and loginLocation != ''">
+				AND login_location like concat('%', #{loginLocation}, '%')
+			</if>
+<!--			<if test="userName != null and userName != ''">-->
+<!--				AND user_name like concat('%', #{userName}, '%')-->
+<!--			</if>-->
+			<!--marriage-->
+			<if test="browser != null and browser != ''">
+			AND browser like concat('%', #{browser}, '%')
+			</if>
+			<!--politicalFace-->
+			<if test="os != null and os != ''">
+				AND os like concat('%', #{os}, '%')
+			</if>
+			<!--region-->
+			<if test="msg != null and msg != ''">
+				AND msg like concat('%', #{msg}, '%')
 			</if>
 			<if test="params.beginTime != null and params.beginTime != ''"><!-- 开始时间检索 -->
 				AND login_time &gt;= #{params.beginTime}
@@ -40,7 +58,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				AND login_time &lt;= #{params.endTime}
 			</if>
 		</where>
-		order by info_id desc
+		order by info_id asc
 	</select>
 	
 	<delete id="deleteLogininforByIds" parameterType="Long">
