@@ -36,9 +36,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <if test="parentId != null and parentId != 0">
 			AND parent_id = #{parentId}
 		</if>
+		<!--name-->
 		<if test="deptName != null and deptName != ''">
 			AND dept_name like concat('%', #{deptName}, '%')
 		</if>
+		<!--level-->
+		<if test="orderNum != null and orderNum != ''">
+			AND order_num like concat('%', #{orderNum}, '%')
+		</if>
+		<!--state-->
 		<if test="status != null and status != ''">
 			AND status = #{status}
 		</if>
