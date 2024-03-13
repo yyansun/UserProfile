@@ -1,30 +1,69 @@
 <template>
   <div class="app-container">
+    <div class="table-top">
     <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">
-      <el-form-item label="登录地址" prop="ipaddr">
-        <el-input
-          v-model="queryParams.ipaddr"
-          placeholder="请输入登录地址"
-          clearable
-          style="width: 240px;"
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
+
       <el-form-item label="用户名称" prop="userName">
         <el-input
           v-model="queryParams.userName"
           placeholder="请输入用户名称"
           clearable
-          style="width: 240px;"
+          style="width: 200px;"
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="状态" prop="status">
+      <el-form-item label="性别" prop="ipaddr">
+        <el-input
+          v-model="queryParams.ipaddr"
+          placeholder="请输入性别"
+          clearable
+          style="width: 200px;"
+          @keyup.enter.native="handleQuery"
+        />
+      </el-form-item>
+      <el-form-item label="职业" prop="loginLocation">
+        <el-input
+          v-model="queryParams.loginLocation"
+          placeholder="请输入职业"
+          clearable
+          style="width: 200px;"
+          @keyup.enter.native="handleQuery"
+        />
+      </el-form-item>
+      <el-form-item label="婚姻状况" prop="browser">
+        <el-input
+          v-model="queryParams.browser"
+          placeholder="请输入婚姻状况"
+          clearable
+          style="width: 200px;"
+          @keyup.enter.native="handleQuery"
+        />
+      </el-form-item>
+      <br>
+      <el-form-item label="政治面貌" prop="os">
+        <el-input
+          v-model="queryParams.os"
+          placeholder="请输入政治面貌"
+          clearable
+          style="width: 200px;"
+          @keyup.enter.native="handleQuery"
+        />
+      </el-form-item>
+      <el-form-item label="所属地区" prop="msg">
+        <el-input
+          v-model="queryParams.msg"
+          placeholder="请输入所属地区"
+          clearable
+          style="width: 200px;"
+          @keyup.enter.native="handleQuery"
+        />
+      </el-form-item>
+      <el-form-item label="会员情况" prop="status">
         <el-select
           v-model="queryParams.status"
-          placeholder="登录状态"
+          placeholder="是否为会员"
           clearable
-          style="width: 240px"
+          style="width: 200px"
         >
           <el-option
             v-for="dict in dict.type.sys_common_status"
@@ -34,7 +73,7 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="登录时间">
+      <el-form-item label="出生日期">
         <el-date-picker
           v-model="dateRange"
           style="width: 240px"
@@ -46,14 +85,16 @@
           :default-time="['00:00:00', '23:59:59']"
         ></el-date-picker>
       </el-form-item>
-      <el-form-item>
-        <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
-        <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
-      </el-form-item>
     </el-form>
-<!--    <el-row :gutter="10" class="mb8">-->
-<!--      <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>-->
-<!--    </el-row>-->
+    </div>
+      <div class="table-middle">
+        <el-form>
+      <el-form-item>
+        <el-button type="primary" icon="el-icon-search" size="medium" @click="handleQuery" style="margin-right: 20px">搜索</el-button>
+        <el-button icon="el-icon-refresh" size="medium" @click="reloadPage">重置</el-button>
+      </el-form-item>
+        </el-form>
+    </div>
     <div class="container-below">
       <el-card class="left-table">
         <el-table ref="tables" v-loading="loading" :data="list" @selection-change="handleSelectionChange" :default-sort="defaultSort" @sort-change="handleSortChange">
@@ -65,7 +106,7 @@
           <el-table-column label="婚姻状况" align="center" prop="browser" :show-overflow-tooltip="true" />
           <el-table-column label="政治面貌" align="center" prop="os" />
           <el-table-column label="所属地区" align="center" prop="msg" :show-overflow-tooltip="true" />
-          <el-table-column label="是否为会员" align="center" prop="status">
+          <el-table-column label="会员情况" align="center" prop="status">
             <template slot-scope="scope">
               <dict-tag :options="dict.type.sys_common_status" :value="scope.row.status"/>
             </template>
@@ -118,7 +159,7 @@ export default {
       // 日期范围
       dateRange: [],
       // 默认排序
-      defaultSort: {prop: 'loginTime', order: 'descending'},
+      defaultSort: {prop: 'infoId', order: 'aescending'},
       // 查询参数
       queryParams: {
         pageNum: 1,
@@ -154,6 +195,10 @@ export default {
       this.resetForm("queryForm");
       this.queryParams.pageNum = 1;
       this.$refs.tables.sort(this.defaultSort.prop, this.defaultSort.order)
+    },
+
+    reloadPage() {
+      window.location.reload();
     },
     /** 多选框选中数据 */
     handleSelectionChange(selection) {
@@ -219,6 +264,16 @@ export default {
 .right-pic{
   flex: 4;
   margin: 20px;
+}
+
+.table-top{
+  margin: 30px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.table-middle{
+  margin-left: 30px;
 }
 </style>
 

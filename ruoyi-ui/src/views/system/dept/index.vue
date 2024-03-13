@@ -10,9 +10,9 @@
             @keyup.enter.native="handleQuery"
           />
         </el-form-item>
-        <el-form-item label="标签级别" prop="deptName">
+        <el-form-item label="标签级别" prop="orderNum">
           <el-input
-            v-model="queryParams.deptName"
+            v-model="queryParams.orderNum"
             placeholder="请输入标签级别"
             clearable
             @keyup.enter.native="handleQuery"
@@ -28,34 +28,39 @@
             />
           </el-select>
         </el-form-item>
+        <br>
         <el-form-item>
-          <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
-          <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
+          <el-button type="primary" icon="el-icon-search" size="medium" @click="handleQuery">搜索</el-button>
+          <el-button icon="el-icon-refresh" size="medium" @click="reloadPage">重置</el-button>
         </el-form-item>
-      </el-form>
 
-      <el-row :gutter="10" class="mb8">
-        <el-col :span="1.5">
+
+<!--      <el-row :gutter="10" class="mb8">-->
+<!--        <el-col :span="1.5">-->
+          <el-form-item>
           <el-button
             type="primary"
             plain
             icon="el-icon-plus"
-            size="mini"
+            size="medium"
             @click="handleAdd"
             v-hasPermi="['system:dept:add']"
           >新增</el-button>
-        </el-col>
-        <el-col :span="1.5">
+            </el-form-item>
+<!--        </el-col>-->
+<!--        <el-col :span="1.5">-->
+      <el-form-item>
           <el-button
             type="info"
             plain
             icon="el-icon-sort"
-            size="mini"
+            size="medium"
             @click="toggleExpandAll"
           >展开/折叠</el-button>
-        </el-col>
-        <!--      <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>-->
-      </el-row>
+      </el-form-item>
+        </el-form>
+<!--        </el-col>-->
+<!--      </el-row>-->
     </div>
     <br>
     <el-card class="info-table">
@@ -67,7 +72,7 @@
       :default-expand-all="isExpandAll"
       :tree-props="{children: 'children', hasChildren: 'hasChildren'}"
     >
-      <el-table-column align="center" prop="deptName" label="标签名称" width="260"></el-table-column>
+      <el-table-column align="left" prop="deptName" label="标签名称" width="260"></el-table-column>
       <el-table-column align="center" prop="orderNum" label="标签级别" width="100"></el-table-column>
       <el-table-column align="center" prop="status" label="使用状态" width="100">
         <template slot-scope="scope">
@@ -108,47 +113,47 @@
     </el-table>
   </el-card>
     <!-- 添加或修改部门对话框 -->
-    <el-dialog :title="title" :visible.sync="open" width="600px" append-to-body>
-      <el-form ref="form" :model="form" :rules="rules" label-width="80px">
+    <el-dialog :title="title" :visible.sync="open" width="650px" append-to-body>
+      <el-form ref="form" :model="form" :rules="rules" label-width="100px">
         <el-row>
           <el-col :span="24" v-if="form.parentId !== 0">
-            <el-form-item label="上级部门" prop="parentId">
-              <treeselect v-model="form.parentId" :options="deptOptions" :normalizer="normalizer" placeholder="选择上级部门" />
+            <el-form-item label="上级标签" prop="parentId">
+              <treeselect v-model="form.parentId" :options="deptOptions" :normalizer="normalizer" placeholder="选择上级标签" />
             </el-form-item>
           </el-col>
         </el-row>
         <el-row>
           <el-col :span="12">
-            <el-form-item label="部门名称" prop="deptName">
-              <el-input v-model="form.deptName" placeholder="请输入部门名称" />
+            <el-form-item label="标签名称" prop="deptName">
+              <el-input v-model="form.deptName" placeholder="请输入标签名称" />
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="显示排序" prop="orderNum">
+            <el-form-item label="标签级别" prop="orderNum">
               <el-input-number v-model="form.orderNum" controls-position="right" :min="0" />
             </el-form-item>
           </el-col>
         </el-row>
         <el-row>
           <el-col :span="12">
-            <el-form-item label="负责人" prop="leader">
+            <el-form-item label="标签负责人" prop="leader">
               <el-input v-model="form.leader" placeholder="请输入负责人" maxlength="20" />
             </el-form-item>
           </el-col>
-          <el-col :span="12">
-            <el-form-item label="联系电话" prop="phone">
-              <el-input v-model="form.phone" placeholder="请输入联系电话" maxlength="11" />
-            </el-form-item>
-          </el-col>
-        </el-row>
-        <el-row>
+<!--          <el-col :span="12">-->
+<!--            <el-form-item label="联系电话" prop="phone">-->
+<!--              <el-input v-model="form.phone" placeholder="请输入联系电话" maxlength="11" />-->
+<!--            </el-form-item>-->
+<!--          </el-col>-->
           <el-col :span="12">
             <el-form-item label="邮箱" prop="email">
               <el-input v-model="form.email" placeholder="请输入邮箱" maxlength="50" />
             </el-form-item>
           </el-col>
+        </el-row>
+        <el-row>
           <el-col :span="12">
-            <el-form-item label="部门状态">
+            <el-form-item label="标签状态">
               <el-radio-group v-model="form.status">
                 <el-radio
                   v-for="dict in dict.type.sys_normal_disable"
@@ -205,13 +210,13 @@ export default {
       // 表单校验
       rules: {
         parentId: [
-          { required: true, message: "上级部门不能为空", trigger: "blur" }
+          { required: true, message: "上级标签不能为空", trigger: "blur" }
         ],
         deptName: [
-          { required: true, message: "部门名称不能为空", trigger: "blur" }
+          { required: true, message: "标签名称不能为空", trigger: "blur" }
         ],
         orderNum: [
-          { required: true, message: "显示排序不能为空", trigger: "blur" }
+          { required: true, message: "标签级别不能为空", trigger: "blur" }
         ],
         email: [
           {
@@ -276,6 +281,10 @@ export default {
     handleQuery() {
       this.getList();
     },
+
+    reloadPage() {
+      window.location.reload();
+      },
     /** 重置按钮操作 */
     resetQuery() {
       this.resetForm("queryForm");
@@ -288,7 +297,7 @@ export default {
         this.form.parentId = row.deptId;
       }
       this.open = true;
-      this.title = "添加部门";
+      this.title = "添加标签";
       listDept().then(response => {
         this.deptOptions = this.handleTree(response.data, "deptId");
       });
@@ -307,7 +316,7 @@ export default {
       getDept(row.deptId).then(response => {
         this.form = response.data;
         this.open = true;
-        this.title = "修改部门";
+        this.title = "修改标签";
         listDeptExcludeChild(row.deptId).then(response => {
           this.deptOptions = this.handleTree(response.data, "deptId");
           if (this.deptOptions.length == 0) {
