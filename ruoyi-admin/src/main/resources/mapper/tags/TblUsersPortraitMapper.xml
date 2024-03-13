@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.tags.mapper.TblUsersPortraitMapper">
+    
+    <resultMap type="TblUsersPortrait" id="TblUsersPortraitResult">
+        <result property="id"    column="id"    />
+        <result property="username"    column="username"    />
+        <result property="memberRankId"    column="memberRankId"    />
+        <result property="gender"    column="gender"    />
+        <result property="birthday"    column="birthday"    />
+        <result property="job"    column="job"    />
+        <result property="mobile"    column="mobile"    />
+        <result property="politicalFace"    column="politicalFace"    />
+        <result property="region"    column="region"    />
+        <result property="marriage"    column="marriage"    />
+        <result property="ageRange"    column="ageRange"    />
+    </resultMap>
+
+    <sql id="selectTblUsersPortraitVo">
+        select id, username, memberRankId, gender, birthday, job, mobile, politicalFace, region, marriage, ageRange from tbl_users_portrait
+    </sql>
+
+    <select id="selectTblUsersPortraitList" parameterType="TblUsersPortrait" resultMap="TblUsersPortraitResult">
+        <include refid="selectTblUsersPortraitVo"/>
+        <where>  
+            <if test="username != null  and username != ''"> and username like concat('%', #{username}, '%')</if>
+            <if test="gender != null "> and gender = #{gender}</if>
+            <if test="job != null "> and job = #{job}</if>
+            <if test="mobile != null  and mobile != ''"> and mobile like concat('%', #{mobile}, '%')</if>
+            <if test="politicalFace != null "> and politicalFace = #{politicalFace}</if>
+            <if test="region != null "> and region = #{region}</if>
+            <if test="marriage != null "> and marriage = #{marriage}</if>
+            <if test="ageRange != null  and ageRange != ''"> and ageRange = #{ageRange}</if>
+        </where>
+    </select>
+    
+    <select id="selectTblUsersPortraitById" parameterType="Integer" resultMap="TblUsersPortraitResult">
+        <include refid="selectTblUsersPortraitVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertTblUsersPortrait" parameterType="TblUsersPortrait" useGeneratedKeys="true" keyProperty="id">
+        insert into tbl_users_portrait
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="username != null and username != ''">username,</if>
+            <if test="memberRankId != null">memberRankId,</if>
+            <if test="gender != null">gender,</if>
+            <if test="birthday != null">birthday,</if>
+            <if test="job != null">job,</if>
+            <if test="mobile != null">mobile,</if>
+            <if test="politicalFace != null">politicalFace,</if>
+            <if test="region != null">region,</if>
+            <if test="marriage != null">marriage,</if>
+            <if test="ageRange != null">ageRange,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="username != null and username != ''">#{username},</if>
+            <if test="memberRankId != null">#{memberRankId},</if>
+            <if test="gender != null">#{gender},</if>
+            <if test="birthday != null">#{birthday},</if>
+            <if test="job != null">#{job},</if>
+            <if test="mobile != null">#{mobile},</if>
+            <if test="politicalFace != null">#{politicalFace},</if>
+            <if test="region != null">#{region},</if>
+            <if test="marriage != null">#{marriage},</if>
+            <if test="ageRange != null">#{ageRange},</if>
+         </trim>
+    </insert>
+
+    <update id="updateTblUsersPortrait" parameterType="TblUsersPortrait">
+        update tbl_users_portrait
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="username != null and username != ''">username = #{username},</if>
+            <if test="memberRankId != null">memberRankId = #{memberRankId},</if>
+            <if test="gender != null">gender = #{gender},</if>
+            <if test="birthday != null">birthday = #{birthday},</if>
+            <if test="job != null">job = #{job},</if>
+            <if test="mobile != null">mobile = #{mobile},</if>
+            <if test="politicalFace != null">politicalFace = #{politicalFace},</if>
+            <if test="region != null">region = #{region},</if>
+            <if test="marriage != null">marriage = #{marriage},</if>
+            <if test="ageRange != null">ageRange = #{ageRange},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteTblUsersPortraitById" parameterType="Integer">
+        delete from tbl_users_portrait where id = #{id}
+    </delete>
+
+    <delete id="deleteTblUsersPortraitByIds" parameterType="String">
+        delete from tbl_users_portrait where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>
