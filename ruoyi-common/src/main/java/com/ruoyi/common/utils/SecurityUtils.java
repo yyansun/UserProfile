@@ -47,7 +47,7 @@ public class SecurityUtils
         }
         catch (Exception e)
         {
-            throw new ServiceException("获取部门ID异常", HttpStatus.UNAUTHORIZED);
+            throw new ServiceException("获取标签ID异常", HttpStatus.UNAUTHORIZED);
         }
     }
 

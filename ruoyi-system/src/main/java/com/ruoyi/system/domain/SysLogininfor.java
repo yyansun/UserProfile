@@ -24,7 +24,7 @@ public class SysLogininfor extends BaseEntity
     private String userName;
 
     /** 登录状态 0成功 1失败 */
-    @Excel(name = "登录状态", readConverterExp = "0=成功,1=失败")
+    @Excel(name = "登录状态", readConverterExp = "0=会员,1=非会员")
     private String status;
 
     /** 登录IP地址 */
@@ -48,8 +48,8 @@ public class SysLogininfor extends BaseEntity
     private String msg;
 
     /** 访问时间 */
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @Excel(name = "访问时间", width = 30, dateFormat = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    @Excel(name = "访问时间", width = 30, dateFormat = "yyyy-MM-dd")
     private Date loginTime;
 
     public Long getInfoId()

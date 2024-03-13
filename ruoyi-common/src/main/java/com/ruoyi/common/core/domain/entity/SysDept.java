@@ -11,7 +11,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 import com.ruoyi.common.core.domain.BaseEntity;
 
 /**
- * 部门表 sys_dept
+ * 标签表 sys_dept
  * 
  * @author ruoyi
  */
@@ -19,16 +19,16 @@ public class SysDept extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
 
-    /** 部门ID */
+    /** 标签ID */
     private Long deptId;
 
-    /** 父部门ID */
+    /** 父标签ID */
     private Long parentId;
 
     /** 祖级列表 */
     private String ancestors;
 
-    /** 部门名称 */
+    /** 标签名称 */
     private String deptName;
 
     /** 显示顺序 */
@@ -43,16 +43,16 @@ public class SysDept extends BaseEntity
     /** 邮箱 */
     private String email;
 
-    /** 部门状态:0正常,1停用 */
+    /** 标签状态:0正常,1停用 */
     private String status;
 
     /** 删除标志（0代表存在 2代表删除） */
     private String delFlag;
 
-    /** 父部门名称 */
+    /** 父标签名称 */
     private String parentName;
     
-    /** 子部门 */
+    /** 子标签 */
     private List<SysDept> children = new ArrayList<SysDept>();
 
     public Long getDeptId()
@@ -85,8 +85,8 @@ public class SysDept extends BaseEntity
         this.ancestors = ancestors;
     }
 
-    @NotBlank(message = "部门名称不能为空")
-    @Size(min = 0, max = 30, message = "部门名称长度不能超过30个字符")
+    @NotBlank(message = "标签名称不能为空")
+    @Size(min = 0, max = 30, message = "标签名称长度不能超过30个字符")
     public String getDeptName()
     {
         return deptName;
