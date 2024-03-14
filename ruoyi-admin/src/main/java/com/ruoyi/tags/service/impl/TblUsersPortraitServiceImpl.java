@@ -1,6 +1,10 @@
 package com.ruoyi.tags.service.impl;
 
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.ruoyi.tags.mapper.TblUsersPortraitMapper;
@@ -18,6 +22,7 @@ public class TblUsersPortraitServiceImpl implements ITblUsersPortraitService
 {
     @Autowired
     private TblUsersPortraitMapper tblUsersPortraitMapper;
+    private static final Logger logger = (Logger) LoggerFactory.getLogger(TblUsersPortraitServiceImpl.class);
 
     /**
      * 查询用户特征
@@ -31,6 +36,16 @@ public class TblUsersPortraitServiceImpl implements ITblUsersPortraitService
         return tblUsersPortraitMapper.selectTblUsersPortraitById(id);
     }
 
+    @Override
+    public List<Integer> findByGender()
+    {
+        logger.debug("Entering findByGender......");
+
+        List<Integer> res = tblUsersPortraitMapper.findByGender();
+        logger.debug("Gender data : {}", res);
+
+        return res;
+    }
     /**
      * 查询用户特征列表
      * 
@@ -42,6 +57,7 @@ public class TblUsersPortraitServiceImpl implements ITblUsersPortraitService
     {
         return tblUsersPortraitMapper.selectTblUsersPortraitList(tblUsersPortrait);
     }
+
 
     /**
      * 新增用户特征
