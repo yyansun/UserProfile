@@ -47,18 +47,23 @@ public class TblUsersPortraitController extends BaseController
         return getDataTable(list);
     }
 
-    @PreAuthorize("@ss.hasPermi('tags:portrait:genderlist')")
-    @GetMapping("/genderlist")
-    public List<Integer> genderlist()
-    {
-        return tblUsersPortraitService.findByGender();
-    }
-
-//    public AjaxResult genderlist()
+//    @PreAuthorize("@ss.hasPermi('tags:portrait:genderlist')")
+//    @GetMapping("/genderlist")
+//    public List<Integer> genderlist()
 //    {
-//        List<Integer> genderlist= tblUsersPortraitService.findByGender();
-//        return genderlist;
+//        return tblUsersPortraitService.findByGender();
 //    }
+//
+////    public AjaxResult genderlist()
+////    {
+////        List<Integer> genderlist= tblUsersPortraitService.findByGender();
+////        return genderlist;
+////    }
+    @GetMapping("/genderlist")
+    public AjaxResult genderlist() {
+        List<Integer> genderList = tblUsersPortraitService.findByGender();
+        return AjaxResult.success(genderList);
+    }
 
 
     /**
