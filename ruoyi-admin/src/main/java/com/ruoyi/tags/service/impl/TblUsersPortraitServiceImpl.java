@@ -46,6 +46,61 @@ public class TblUsersPortraitServiceImpl implements ITblUsersPortraitService
 
         return res;
     }
+
+    @Override
+    public List<Integer> findByPoliticalFace()
+    {
+        logger.debug("Entering findByPoliticalFace......");
+
+        List<Integer> res = tblUsersPortraitMapper.findByPoliticalFace();
+        logger.debug("PoliticalFace data : {}", res);
+
+        return res;
+    }
+
+    @Override
+    public List<Integer> findByMarriage()
+    {
+        logger.debug("Entering findByMarriage......");
+
+        List<Integer> res = tblUsersPortraitMapper.findByMarriage();
+        logger.debug("Marriage data : {}", res);
+
+        return res;
+    }
+
+    @Override
+    public List<Integer> findByRegion()
+    {
+        logger.debug("Entering findByRegion......");
+
+        List<Integer> res = tblUsersPortraitMapper.findByRegion();
+        logger.debug("GRegion data : {}", res);
+
+        return res;
+    }
+
+    @Override
+    public List<Integer> findByAgeRange()
+    {
+        logger.debug("Entering fAgeRange......");
+
+        List<Integer> res = tblUsersPortraitMapper.findByAgeRange();
+        logger.debug("AgeRange data : {}", res);
+
+        return res;
+    }
+    @Override
+    public List<Integer> findByJob()
+    {
+        logger.debug("Entering findByJob......");
+
+        List<Integer> res = tblUsersPortraitMapper.findByJob();
+        logger.debug("Job data : {}", res);
+
+        return res;
+    }
+
     /**
      * 查询用户特征列表
      * 

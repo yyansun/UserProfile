@@ -1,6 +1,8 @@
 package com.ruoyi.tags.controller;
 
 import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 import com.google.gson.Gson;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -59,12 +61,61 @@ public class TblUsersPortraitController extends BaseController
 ////        List<Integer> genderlist= tblUsersPortraitService.findByGender();
 ////        return genderlist;
 ////    }
-    @GetMapping("/genderlist")
-    public AjaxResult genderlist() {
-        List<Integer> genderList = tblUsersPortraitService.findByGender();
-        return AjaxResult.success(genderList);
-    }
+//    @GetMapping("/genderlist")
+//    public AjaxResult genderlist() {
+//        List<Integer> genderList = tblUsersPortraitService.findByGender();
+//        return AjaxResult.success(genderList);
+//    }
+//
+//    @GetMapping("/politicalfacelist")
+//    public AjaxResult politicalfacelist() {
+//        List<Integer> politicalfaceList = tblUsersPortraitService.findByPoliticalFace();
+//        return AjaxResult.success(politicalfaceList);
+//    }
+//
+//    @GetMapping("/marriagelist")
+//    public AjaxResult marriagelist() {
+//        List<Integer> marriagefaceList = tblUsersPortraitService.findByMarriage();
+//        return AjaxResult.success(marriagefaceList);
+//    }
+//
+//    @GetMapping("/regionlist")
+//    public AjaxResult regionlist() {
+//        List<Integer> regionList = tblUsersPortraitService.findByRegion();
+//        return AjaxResult.success(regionList);
+//    }
+//
+//    @GetMapping("/agerangelist")
+//    public AjaxResult agerangelist() {
+//        List<Integer> agerangeList = tblUsersPortraitService.findByAgeRange();
+//        return AjaxResult.success(agerangeList);
+//    }
+//
+//    @GetMapping("/joblist")
+//    public AjaxResult joblist() {
+//        List<Integer> jobList = tblUsersPortraitService.findByJob();
+//        return AjaxResult.success(jobList);
+//    }
 
+    @GetMapping("/datalist")
+    public AjaxResult datalist() {
+        List<Integer> genderList = tblUsersPortraitService.findByGender();
+        List<Integer> politicalFaceList = tblUsersPortraitService.findByPoliticalFace();
+        List<Integer> marriageList = tblUsersPortraitService.findByMarriage();
+        List<Integer> regionList = tblUsersPortraitService.findByRegion();
+        List<Integer> ageRangeList = tblUsersPortraitService.findByAgeRange();
+        List<Integer> jobList = tblUsersPortraitService.findByJob();
+
+        Map<String, List<Integer>> dataList = new HashMap<>();
+        dataList.put("genderList", genderList);
+        dataList.put("politicalFaceList", politicalFaceList);
+        dataList.put("marriageList", marriageList);
+        dataList.put("regionList", regionList);
+        dataList.put("ageRangeList", ageRangeList);
+        dataList.put("jobList", jobList);
+
+        return AjaxResult.success(dataList);
+    }
 
     /**
      * 导出用户特征列表

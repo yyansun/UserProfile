@@ -31,6 +31,12 @@ public interface TblUsersPortraitMapper
      * 查询用户性别占比
      */
     public List<Integer> findByGender( );
+    public List<Integer> findByPoliticalFace( );
+    public List<Integer> findByJob( );
+    public List<Integer> findByMarriage( );
+    public List<Integer> findByRegion( );
+    public List<Integer> findByAgeRange( );
+
 
     /**
      * 新增用户特征

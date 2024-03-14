@@ -41,10 +41,31 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         where id = #{id}
     </select>
 
+<!--    性别-->
     <select id="findByGender" parameterType="java.util.List">
         SELECT count(*) from tbl_users_portrait group by gender;
     </select>
-        
+<!--    政治面貌-->
+    <select id="findByPoliticalFace" parameterType="java.util.List">
+        SELECT count(*) from tbl_users_portrait group by politicalFace;
+    </select>
+<!--    婚姻状况-->
+     <select id="findByMarriage" parameterType="java.util.List">
+         SELECT count(*) from tbl_users_portrait group by marriage;
+     </select>
+<!--    所属地区-->
+    <select id="findByRegion" parameterType="java.util.List">
+        SELECT count(*) from tbl_users_portrait group by region;
+    </select>
+<!--    年龄段-->
+    <select id="findByAgeRange" parameterType="java.util.List">
+        SELECT count(*) from tbl_users_portrait group by ageRange;
+    </select>
+<!--    职业-->
+    <select id="findByJob" parameterType="java.util.List">
+        SELECT count(*) from tbl_users_portrait group by job;
+    </select>
+
     <insert id="insertTblUsersPortrait" parameterType="TblUsersPortrait" useGeneratedKeys="true" keyProperty="id">
         insert into tbl_users_portrait
         <trim prefix="(" suffix=")" suffixOverrides=",">

@@ -9,9 +9,51 @@ export function listPortrait(query) {
   })
 }
 
-export function findByGender() {
+// export function findByGender() {
+//   return request({
+//     url:'/tags/portrait/genderlist',
+//     method: 'get'
+//   })
+// }
+//
+// export function findByPoliticalFace() {
+//   return request({
+//     url:'/tags/portrait/politicalfacelist',
+//     method: 'get'
+//   })
+// }
+//
+// export function findByMarriage() {
+//   return request({
+//     url:'/tags/portrait/marriagelist',
+//     method: 'get'
+//   })
+// }
+//
+// export function findByRegion() {
+//   return request({
+//     url:'/tags/portrait/regionlist',
+//     method: 'get'
+//   })
+// }
+//
+// export function findByAgeRange() {
+//   return request({
+//     url:'/tags/portrait/agerangelist',
+//     method: 'get'
+//   })
+// }
+//
+// export function findByJob() {
+//   return request({
+//     url:'/tags/portrait/joblist',
+//     method: 'get'
+//   })
+// }
+
+export function findBy() {
   return request({
-    url:'/tags/portrait/genderlist',
+    url:'/tags/portrait/datalist',
     method: 'get'
   })
 }
