@@ -29,6 +29,12 @@ public interface ITblUsersPortraitService
     public List<TblUsersPortrait> selectTblUsersPortraitList(TblUsersPortrait tblUsersPortrait);
 
     public List<Integer> findByGender();
+    public List<Integer> findByJob();
+    public List<Integer> findByRegion();
+    public List<Integer> findByAgeRange();
+    public List<Integer> findByMarriage();
+    public List<Integer> findByPoliticalFace();
+
     /**
      * 新增用户特征
      * 
