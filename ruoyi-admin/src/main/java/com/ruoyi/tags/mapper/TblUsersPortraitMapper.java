@@ -28,6 +28,11 @@ public interface TblUsersPortraitMapper
     public List<TblUsersPortrait> selectTblUsersPortraitList(TblUsersPortrait tblUsersPortrait);
 
     /**
+     * 查询用户性别占比
+     */
+    public List<Integer> findByGender( );
+
+    /**
      * 新增用户特征
      * 
      * @param tblUsersPortrait 用户特征

@@ -9,6 +9,13 @@ export function listPortrait(query) {
   })
 }
 
+export function findByGender() {
+  return request({
+    url:'/tags/portrait/genderlist',
+    method: 'get'
+  })
+}
+
 // 查询用户特征详细
 export function getPortrait(id) {
   return request({

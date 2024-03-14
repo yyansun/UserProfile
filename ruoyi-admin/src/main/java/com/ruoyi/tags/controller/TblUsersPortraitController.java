@@ -1,6 +1,7 @@
 package com.ruoyi.tags.controller;
 
 import java.util.List;
+import com.google.gson.Gson;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +46,20 @@ public class TblUsersPortraitController extends BaseController
         List<TblUsersPortrait> list = tblUsersPortraitService.selectTblUsersPortraitList(tblUsersPortrait);
         return getDataTable(list);
     }
+
+    @PreAuthorize("@ss.hasPermi('tags:portrait:genderlist')")
+    @GetMapping("/genderlist")
+    public List<Integer> genderlist()
+    {
+        return tblUsersPortraitService.findByGender();
+    }
+
+//    public AjaxResult genderlist()
+//    {
+//        List<Integer> genderlist= tblUsersPortraitService.findByGender();
+//        return genderlist;
+//    }
+
 
     /**
      * 导出用户特征列表

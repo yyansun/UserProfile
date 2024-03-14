@@ -19,6 +19,7 @@ public interface ITblUsersPortraitService
      */
     public TblUsersPortrait selectTblUsersPortraitById(Integer id);
 
+
     /**
      * 查询用户特征列表
      * 
@@ -27,6 +28,7 @@ public interface ITblUsersPortraitService
      */
     public List<TblUsersPortrait> selectTblUsersPortraitList(TblUsersPortrait tblUsersPortrait);
 
+    public List<Integer> findByGender();
     /**
      * 新增用户特征
      * 
