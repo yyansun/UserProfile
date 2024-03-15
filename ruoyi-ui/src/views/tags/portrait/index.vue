@@ -1,224 +1,166 @@
 <!--<template>-->
 <!--  <div class="app-container">-->
-<!--    <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">-->
-<!--      <el-form-item label="用户名" prop="username">-->
-<!--        <el-input-->
-<!--          v-model="queryParams.username"-->
-<!--          placeholder="请输入用户名"-->
-<!--          clearable-->
-<!--          @keyup.enter.native="handleQuery"-->
-<!--        />-->
-<!--      </el-form-item>-->
-<!--      <el-form-item label="性别" prop="gender">-->
-<!--        <el-select v-model="queryParams.gender" placeholder="请选择性别" clearable>-->
-<!--          <el-option-->
-<!--            v-for="dict in dict.type.user_gender"-->
-<!--            :key="dict.value"-->
-<!--            :label="dict.label"-->
-<!--            :value="dict.value"-->
+<!--    <div style="margin-left: 20px">-->
+<!--      <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">-->
+<!--        <el-form-item label="用户名" prop="username">-->
+<!--          <el-input-->
+<!--            v-model="queryParams.username"-->
+<!--            placeholder="请输入用户名"-->
+<!--            clearable-->
+<!--            @keyup.enter.native="handleQuery"-->
 <!--          />-->
-<!--        </el-select>-->
-<!--      </el-form-item>-->
-<!--      <el-form-item label="职业" prop="job">-->
-<!--        <el-select v-model="queryParams.job" placeholder="请选择职业" clearable>-->
-<!--          <el-option-->
-<!--            v-for="dict in dict.type.user_job"-->
-<!--            :key="dict.value"-->
-<!--            :label="dict.label"-->
-<!--            :value="dict.value"-->
+<!--        </el-form-item>-->
+<!--        <el-form-item label="联系方式" prop="mobile">-->
+<!--          <el-input-->
+<!--            v-model="queryParams.mobile"-->
+<!--            placeholder="请输入联系方式"-->
+<!--            clearable-->
+<!--            @keyup.enter.native="handleQuery"-->
 <!--          />-->
-<!--        </el-select>-->
-<!--      </el-form-item>-->
-<!--      <el-form-item label="联系方式" prop="mobile">-->
-<!--        <el-input-->
-<!--          v-model="queryParams.mobile"-->
-<!--          placeholder="请输入联系方式"-->
-<!--          clearable-->
-<!--          @keyup.enter.native="handleQuery"-->
-<!--        />-->
-<!--      </el-form-item>-->
-<!--      <el-form-item label="政治面貌" prop="politicalFace">-->
-<!--        <el-select v-model="queryParams.politicalFace" placeholder="请选择政治面貌" clearable>-->
-<!--          <el-option-->
-<!--            v-for="dict in dict.type.user_political_face"-->
-<!--            :key="dict.value"-->
-<!--            :label="dict.label"-->
-<!--            :value="dict.value"-->
-<!--          />-->
-<!--        </el-select>-->
-<!--      </el-form-item>-->
-<!--      <el-form-item label="所属地区" prop="region">-->
-<!--        <el-select v-model="queryParams.region" placeholder="请选择所属地区" clearable>-->
-<!--          <el-option-->
-<!--            v-for="dict in dict.type.user_region"-->
-<!--            :key="dict.value"-->
-<!--            :label="dict.label"-->
-<!--            :value="dict.value"-->
-<!--          />-->
-<!--        </el-select>-->
-<!--      </el-form-item>-->
-<!--      <el-form-item label="婚姻状况" prop="marriage">-->
-<!--        <el-select v-model="queryParams.marriage" placeholder="请选择婚姻状况" clearable>-->
-<!--          <el-option-->
-<!--            v-for="dict in dict.type.user_marriage"-->
-<!--            :key="dict.value"-->
-<!--            :label="dict.label"-->
-<!--            :value="dict.value"-->
-<!--          />-->
-<!--        </el-select>-->
-<!--      </el-form-item>-->
-<!--      <el-form-item label="年龄段" prop="ageRange">-->
-<!--        <el-select v-model="queryParams.ageRange" placeholder="请选择年龄段" clearable>-->
-<!--          <el-option-->
-<!--            v-for="dict in dict.type.user_age"-->
-<!--            :key="dict.value"-->
-<!--            :label="dict.label"-->
-<!--            :value="dict.value"-->
-<!--          />-->
-<!--        </el-select>-->
-<!--      </el-form-item>-->
-<!--      <el-form-item>-->
-<!--        <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>-->
-<!--        <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>-->
-<!--      </el-form-item>-->
-<!--    </el-form>-->
+<!--        </el-form-item>-->
+<!--        <el-form-item label="性别" prop="gender">-->
+<!--          <el-select v-model="queryParams.gender" placeholder="请选择性别" clearable>-->
+<!--            <el-option-->
+<!--              v-for="dict in dict.type.user_gender"-->
+<!--              :key="dict.value"-->
+<!--              :label="dict.label"-->
+<!--              :value="dict.value"-->
+<!--            />-->
+<!--          </el-select>-->
+<!--        </el-form-item>-->
+<!--        <el-form-item label="职业" prop="job">-->
+<!--          <el-select v-model="queryParams.job" placeholder="请选择职业" clearable>-->
+<!--            <el-option-->
+<!--              v-for="dict in dict.type.user_job"-->
+<!--              :key="dict.value"-->
+<!--              :label="dict.label"-->
+<!--              :value="dict.value"-->
+<!--            />-->
+<!--          </el-select>-->
+<!--        </el-form-item>-->
+<!--        <br>-->
+<!--        <el-form-item label="年龄段" prop="ageRange">-->
+<!--          <el-select v-model="queryParams.ageRange" placeholder="请选择年龄段" clearable>-->
+<!--            <el-option-->
+<!--              v-for="dict in dict.type.user_age"-->
+<!--              :key="dict.value"-->
+<!--              :label="dict.label"-->
+<!--              :value="dict.value"-->
+<!--            />-->
+<!--          </el-select>-->
+<!--        </el-form-item>-->
+<!--        <el-form-item label="政治面貌" prop="politicalFace">-->
+<!--          <el-select v-model="queryParams.politicalFace" placeholder="请选择政治面貌" clearable>-->
+<!--            <el-option-->
+<!--              v-for="dict in dict.type.user_political_face"-->
+<!--              :key="dict.value"-->
+<!--              :label="dict.label"-->
+<!--              :value="dict.value"-->
+<!--            />-->
+<!--          </el-select>-->
+<!--        </el-form-item>-->
+<!--        <el-form-item label="所属地区" prop="region">-->
+<!--          <el-select v-model="queryParams.region" placeholder="请选择所属地区" clearable>-->
+<!--            <el-option-->
+<!--              v-for="dict in dict.type.user_region"-->
+<!--              :key="dict.value"-->
+<!--              :label="dict.label"-->
+<!--              :value="dict.value"-->
+<!--            />-->
+<!--          </el-select>-->
+<!--        </el-form-item>-->
+<!--        <el-form-item label="婚姻状况" prop="marriage">-->
+<!--          <el-select v-model="queryParams.marriage" placeholder="请选择婚姻状况" clearable>-->
+<!--            <el-option-->
+<!--              v-for="dict in dict.type.user_marriage"-->
+<!--              :key="dict.value"-->
+<!--              :label="dict.label"-->
+<!--              :value="dict.value"-->
+<!--            />-->
+<!--          </el-select>-->
+<!--        </el-form-item>-->
 
-<!--    <el-row :gutter="10" class="mb8">-->
-<!--      <el-col :span="1.5">-->
-<!--        <el-button-->
-<!--          type="primary"-->
-<!--          plain-->
-<!--          icon="el-icon-plus"-->
-<!--          size="mini"-->
-<!--          @click="handleAdd"-->
-<!--          v-hasPermi="['tags:portrait:add']"-->
-<!--        >新增</el-button>-->
-<!--      </el-col>-->
-<!--      <el-col :span="1.5">-->
-<!--        <el-button-->
-<!--          type="success"-->
-<!--          plain-->
-<!--          icon="el-icon-edit"-->
-<!--          size="mini"-->
-<!--          :disabled="single"-->
-<!--          @click="handleUpdate"-->
-<!--          v-hasPermi="['tags:portrait:edit']"-->
-<!--        >修改</el-button>-->
-<!--      </el-col>-->
-<!--      <el-col :span="1.5">-->
-<!--        <el-button-->
-<!--          type="danger"-->
-<!--          plain-->
-<!--          icon="el-icon-delete"-->
-<!--          size="mini"-->
-<!--          :disabled="multiple"-->
-<!--          @click="handleDelete"-->
-<!--          v-hasPermi="['tags:portrait:remove']"-->
-<!--        >删除</el-button>-->
-<!--      </el-col>-->
-<!--      <el-col :span="1.5">-->
-<!--        <el-button-->
-<!--          type="warning"-->
-<!--          plain-->
-<!--          icon="el-icon-download"-->
-<!--          size="mini"-->
-<!--          @click="handleExport"-->
-<!--          v-hasPermi="['tags:portrait:export']"-->
-<!--        >导出</el-button>-->
-<!--      </el-col>-->
-<!--      <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>-->
-<!--    </el-row>-->
-
-<!--    <el-table v-loading="loading" :data="portraitList" @selection-change="handleSelectionChange">-->
-<!--      <el-table-column type="selection" width="55" align="center" />-->
-<!--      <el-table-column label="用户编号" align="center" prop="id" />-->
-<!--      <el-table-column label="用户名" align="center" prop="username" />-->
-<!--      <el-table-column label="性别" align="center" prop="gender">-->
-<!--        <template slot-scope="scope">-->
-<!--          <dict-tag :options="dict.type.user_gender" :value="scope.row.gender"/>-->
-<!--        </template>-->
-<!--      </el-table-column>-->
-<!--      <el-table-column label="生日" align="center" prop="birthday" width="180">-->
-<!--        <template slot-scope="scope">-->
-<!--          <span>{{ parseTime(scope.row.birthday, '{y}-{m}-{d}') }}</span>-->
-<!--        </template>-->
-<!--      </el-table-column>-->
-<!--      <el-table-column label="职业" align="center" prop="job">-->
-<!--        <template slot-scope="scope">-->
-<!--          <dict-tag :options="dict.type.user_job" :value="scope.row.job"/>-->
-<!--        </template>-->
-<!--      </el-table-column>-->
-<!--      <el-table-column label="联系方式" align="center" prop="mobile" />-->
-<!--      <el-table-column label="政治面貌" align="center" prop="politicalFace">-->
-<!--        <template slot-scope="scope">-->
-<!--          <dict-tag :options="dict.type.user_political_face" :value="scope.row.politicalFace"/>-->
-<!--        </template>-->
-<!--      </el-table-column>-->
-<!--      <el-table-column label="所属地区" align="center" prop="region">-->
-<!--        <template slot-scope="scope">-->
-<!--          <dict-tag :options="dict.type.user_region" :value="scope.row.region"/>-->
-<!--        </template>-->
-<!--      </el-table-column>-->
-<!--      <el-table-column label="婚姻状况" align="center" prop="marriage">-->
-<!--        <template slot-scope="scope">-->
-<!--          <dict-tag :options="dict.type.user_marriage" :value="scope.row.marriage"/>-->
-<!--        </template>-->
-<!--      </el-table-column>-->
-<!--      <el-table-column label="操作" align="center" class-name="small-padding fixed-width">-->
-<!--        <template slot-scope="scope">-->
-<!--          <el-button-->
-<!--            size="mini"-->
-<!--            type="text"-->
-<!--            icon="el-icon-edit"-->
-<!--            @click="handleUpdate(scope.row)"-->
-<!--            v-hasPermi="['tags:portrait:edit']"-->
-<!--          >修改</el-button>-->
-<!--          <el-button-->
-<!--            size="mini"-->
-<!--            type="text"-->
-<!--            icon="el-icon-delete"-->
-<!--            @click="handleDelete(scope.row)"-->
-<!--            v-hasPermi="['tags:portrait:remove']"-->
-<!--          >删除</el-button>-->
-<!--        </template>-->
-<!--      </el-table-column>-->
-<!--    </el-table>-->
-
-<!--    <pagination-->
-<!--      v-show="total>0"-->
-<!--      :total="total"-->
-<!--      :page.sync="queryParams.pageNum"-->
-<!--      :limit.sync="queryParams.pageSize"-->
-<!--      @pagination="getList"-->
-<!--    />-->
-
-<!--    &lt;!&ndash; 添加或修改用户特征对话框 &ndash;&gt;-->
-<!--    <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>-->
-<!--      <el-form ref="form" :model="form" :rules="rules" label-width="80px">-->
+<!--        <br>-->
+<!--        <el-form-item style="margin-left: 30px">-->
+<!--          <el-button type="primary" icon="el-icon-search" size="medium" @click="handleQuery">搜索</el-button>-->
+<!--          <el-button icon="el-icon-refresh" size="medium" @click="resetQuery">重置</el-button>-->
+<!--        </el-form-item>-->
 <!--      </el-form>-->
-<!--      <div slot="footer" class="dialog-footer">-->
-<!--        <el-button type="primary" @click="submitForm">确 定</el-button>-->
-<!--        <el-button @click="cancel">取 消</el-button>-->
-<!--      </div>-->
-<!--    </el-dialog>-->
+<!--    </div>-->
+<!--    <el-row>-->
+<!--      <el-col :span="16">-->
+<!--        <el-card style="width: 890px; margin-left: 20px">-->
+<!--          <el-table v-loading="loading" :data="portraitList" @selection-change="handleSelectionChange">-->
+<!--            <el-table-column label="用户编号" align="center" prop="id" width="80"/>-->
+<!--            <el-table-column label="用户名" align="center" prop="username" width="80"/>-->
+<!--            <el-table-column label="性别" align="center" prop="gender" width="60">-->
+<!--              <template slot-scope="scope">-->
+<!--                <dict-tag :options="dict.type.user_gender" :value="scope.row.gender"/>-->
+<!--              </template>-->
+<!--            </el-table-column>-->
+<!--            <el-table-column label="生日" align="center" prop="birthday" width="100">-->
+<!--              <template slot-scope="scope">-->
+<!--                <span>{{ parseTime(scope.row.birthday, '{y}-{m}-{d}') }}</span>-->
+<!--              </template>-->
+<!--            </el-table-column>-->
+<!--            <el-table-column label="职业" align="center" prop="job">-->
+<!--              <template slot-scope="scope">-->
+<!--                <dict-tag :options="dict.type.user_job" :value="scope.row.job"/>-->
+<!--              </template>-->
+<!--            </el-table-column>-->
+<!--            <el-table-column label="联系方式" align="center" prop="mobile" width="110"/>-->
+<!--            <el-table-column label="政治面貌" align="center" prop="politicalFace">-->
+<!--              <template slot-scope="scope">-->
+<!--                <dict-tag :options="dict.type.user_political_face" :value="scope.row.politicalFace"/>-->
+<!--              </template>-->
+<!--            </el-table-column>-->
+<!--            <el-table-column label="所属地区" align="center" prop="region">-->
+<!--              <template slot-scope="scope">-->
+<!--                <dict-tag :options="dict.type.user_region" :value="scope.row.region"/>-->
+<!--              </template>-->
+<!--            </el-table-column>-->
+<!--            <el-table-column label="婚姻状况" align="center" prop="marriage">-->
+<!--              <template slot-scope="scope">-->
+<!--                <dict-tag :options="dict.type.user_marriage" :value="scope.row.marriage"/>-->
+<!--              </template>-->
+<!--            </el-table-column>-->
+<!--          </el-table>-->
 
+<!--          <pagination-->
+<!--            v-show="total>0"-->
+<!--            :total="total"-->
+<!--            :page.sync="queryParams.pageNum"-->
+<!--            :limit.sync="queryParams.pageSize"-->
+<!--            @pagination="getList"-->
+<!--          />-->
+<!--        </el-card>-->
+<!--      </el-col>-->
+<!--      <el-col :span="8">-->
+<!--        <el-card>-->
+<!--          <h1>TEST</h1>图1-->
 
-<!--    <el-card>-->
-<!--      <div ref="pieChart" style="width: 400px; height: 400px;"></div>-->
-<!--    </el-card>-->
-<!--    <el-card>-->
-<!--      <router-link to="/visual">跳转到图形界面</router-link>-->
-<!--    </el-card>-->
+<!--        </el-card>-->
+<!--      </el-col>-->
+<!--    </el-row>-->
+<!--    &lt;!&ndash;    &lt;!&ndash; 添加或修改用户特征对话框 &ndash;&gt;&ndash;&gt;-->
+<!--    &lt;!&ndash;    <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>&ndash;&gt;-->
+<!--    &lt;!&ndash;      <el-form ref="form" :model="form" :rules="rules" label-width="80px">&ndash;&gt;-->
+<!--    &lt;!&ndash;      </el-form>&ndash;&gt;-->
+<!--    &lt;!&ndash;      <div slot="footer" class="dialog-footer">&ndash;&gt;-->
+<!--    &lt;!&ndash;        <el-button type="primary" @click="submitForm">确 定</el-button>&ndash;&gt;-->
+<!--    &lt;!&ndash;        <el-button @click="cancel">取 消</el-button>&ndash;&gt;-->
+<!--    &lt;!&ndash;      </div>&ndash;&gt;-->
+<!--    &lt;!&ndash;    </el-dialog>&ndash;&gt;-->
 <!--  </div>-->
 
 <!--</template>-->
 
 <!--<script>-->
-<!--import { listPortrait, findByGender, getPortrait, delPortrait, addPortrait, updatePortrait } from "@/api/tags/portrait";-->
+<!--import { listPortrait, getPortrait, delPortrait, addPortrait, updatePortrait } from "@/api/tags/portrait";-->
 <!--import * as echarts from "echarts";-->
 
 <!--export default {-->
-<!--  name: "Portrait",-->
+<!--  name: "Visual",-->
 <!--  dicts: ['user_age', 'user_gender', 'user_region', 'user_political_face', 'user_marriage', 'user_job'],-->
 <!--  data() {-->
 <!--    return {-->
@@ -260,12 +202,11 @@
 <!--      // 表单校验-->
 <!--      rules: {-->
 <!--        username: [-->
-<!--          { required: true, message: "用户名不能为空", trigger: "blur" }-->
+<!--          {required: true, message: "用户名不能为空", trigger: "blur"}-->
 <!--        ],-->
 <!--      }-->
 <!--    };-->
 <!--  },-->
-
 
 
 <!--  mounted() {-->
@@ -288,52 +229,6 @@
 <!--        this.loading = false;-->
 <!--      });-->
 <!--    },-->
-
-<!--    fetchGenderData() {-->
-<!--      this.loading = true;-->
-<!--      findByGender()-->
-<!--        .then(response => {-->
-<!--          console.log('================Gender data:', response.data);-->
-<!--          this.genderData = response.data;-->
-<!--          this.$nextTick(() => {-->
-<!--            this.drawPieChart(); // 在下一个tick中调用绘制图表的方法-->
-<!--          });-->
-<!--        })-->
-<!--        .catch(error => {-->
-<!--          console.error('Error fetching gender data:', error);-->
-<!--        })-->
-<!--        .finally(() => {-->
-<!--          this.loading = false;-->
-<!--        });-->
-<!--    },-->
-
-
-<!--    drawPieChart() {-->
-<!--      const chartDom = this.$refs.pieChart // 获取图表容器-->
-<!--      const myChart = echarts.init(chartDom) // 初始化图表-->
-<!--      const option = {-->
-<!--        title: {-->
-<!--          text: 'Gender Distribution'-->
-<!--        },-->
-<!--        tooltip: {-->
-<!--          trigger: 'item',-->
-<!--          formatter: '{a} <br/>{b} : {c} ({d}%)'-->
-<!--        },-->
-<!--        series: [-->
-<!--          {-->
-<!--            name: 'Gender',-->
-<!--            type: 'pie',-->
-<!--            radius: '55%',-->
-<!--            data: [-->
-<!--              { value: this.genderData[0], name: 'Male' }, // 使用性别数据绘制饼图-->
-<!--              { value: this.genderData[1], name: 'Female' },-->
-<!--            ]-->
-<!--          }-->
-<!--        ]-->
-<!--      }-->
-<!--      myChart.setOption(option) // 设置图表配置选项-->
-<!--    }-->
-<!--  },-->
 
 
 <!--    // 取消按钮-->
@@ -371,7 +266,7 @@
 <!--    // 多选框选中数据-->
 <!--    handleSelectionChange(selection) {-->
 <!--      this.ids = selection.map(item => item.id)-->
-<!--      this.single = selection.length!==1-->
+<!--      this.single = selection.length !== 1-->
 <!--      this.multiple = !selection.length-->
 <!--    },-->
 <!--    /** 新增按钮操作 */-->
@@ -413,12 +308,13 @@
 <!--    /** 删除按钮操作 */-->
 <!--    handleDelete(row) {-->
 <!--      const ids = row.id || this.ids;-->
-<!--      this.$modal.confirm('是否确认删除用户特征编号为"' + ids + '"的数据项？').then(function() {-->
+<!--      this.$modal.confirm('是否确认删除用户特征编号为"' + ids + '"的数据项？').then(function () {-->
 <!--        return delPortrait(ids);-->
 <!--      }).then(() => {-->
 <!--        this.getList();-->
 <!--        this.$modal.msgSuccess("删除成功");-->
-<!--      }).catch(() => {});-->
+<!--      }).catch(() => {-->
+<!--      });-->
 <!--    },-->
 <!--    /** 导出按钮操作 */-->
 <!--    handleExport() {-->
@@ -426,45 +322,59 @@
 <!--        ...this.queryParams-->
 <!--      }, `portrait_${new Date().getTime()}.xlsx`)-->
 <!--    }-->
-<!--};-->
+<!--  }-->
+<!--}-->
 <!--</script>-->
 
+
 <template>
-  <div class="app-container">
+  <div class="app-container" style="margin-left: 20px; margin-right: 20px">
+    <div class="flex-container">
     <el-row>
-      <el-col :span="8">
-        <el-card>
-          <div ref="genderChart" style="width: 400px; height: 400px;"></div>
-        </el-card>
+      <el-col :span="7">
+        <router-link to="visual">
+          <el-card @click="handleJump()" class="card1">
+            <div slot="header"><span class="chartTitle">性别分布</span></div>
+            <div ref="genderChart" class="card-img" style="width: 350px; height: 350px;"></div>
+          </el-card>
+        </router-link>
+
       </el-col>
       <el-col :span="8">
-        <el-card>
-          <div ref="jobChart" style="width: 400px; height: 400px;"></div>
+        <el-card class="card1">
+          <div slot="header"><span class="chartTitle">政治面貌分布</span></div>
+          <div ref="faceChart" class="card-img"  style="width: 350px; height: 350px;"></div>
         </el-card>
       </el-col>
-      <el-col :span="8">
-        <el-card>
-          <div ref="marriageChart" style="width: 400px; height: 400px;"></div>
-        </el-card>
+
+      <el-col :span="9">
+          <el-card class="card1" style="margin-right: 0">
+            <div slot="header"><span class="chartTitle">职业分布</span></div>
+            <div ref="jobChart" class="card-img"  style="width: 500px; height: 350px;"></div>
+          </el-card>
       </el-col>
     </el-row>
     <el-row>
-      <el-col :span="8">
-        <el-card>
-          <div ref="regionChart" style="width: 400px; height: 400px;"></div>
+      <el-col :span="7">
+        <el-card class="card1">
+          <div slot="header"><span class="chartTitle">所属地区分布</span></div>
+          <div ref="regionChart" class="card-img" style="width: 400px; height: 400px;"></div>
         </el-card>
       </el-col>
       <el-col :span="8">
-        <el-card>
-          <div ref="ageChart" style="width: 400px; height: 400px;"></div>
+        <el-card class="card1">
+          <div slot="header"><span class="chartTitle">婚姻状况分布</span></div>
+          <div ref="marriageChart" class="card-img" style="width: 400px; height: 400px;"></div>
         </el-card>
       </el-col>
-      <el-col :span="8">
-        <el-card>
-          <div ref="faceChart" style="width: 400px; height: 400px;"></div>
-        </el-card>
+      <el-col :span="9">
+          <el-card class="card1" style="margin-right: 0">
+            <div slot="header"><span class="chartTitle">年龄分布</span></div>
+            <div ref="ageChart" class="card-img" style="width: 400px; height: 400px;"></div>
+          </el-card>
       </el-col>
     </el-row>
+    </div>
   </div>
 </template>
 
@@ -473,7 +383,7 @@ import {findBy} from "@/api/tags/portrait";
 import * as echarts from "echarts";
 
 export default {
-  name:"Visual",
+  name:"Index",
   data() {
     return {
       // 遮罩层
@@ -495,14 +405,18 @@ export default {
   },
 
   methods: {
+    goIndex() {
+      this.$router.push('/tags/portrait/visual');
+    },
+
     fetchData() {
       this.loading = true;
       findBy()
         .then(response => {
           console.log('==================Data:', response.data);
           this.genderData = response.data.genderList;
-          this.ageRangeData = response.data.ageRangeList;
-          this.jobData = response.data.jobList;
+          this.ageRangeData = response.data.ageRangeList.sort();
+          this.jobData = response.data.jobList.sort();
           this.marriageData = response.data.marriageList;
           this.politicalFaceData = response.data.politicalFaceList;
           this.regionData = response.data.regionList;
@@ -518,22 +432,26 @@ export default {
         });
     },
 
+    handleJump: function( ) {
+      this.$router.push("/tags/portrait/visual");
+    },
+
     drawCharts() {
-      this.drawPieChart('genderChart', 'Gender', this.genderData, ['Male', 'Female']);
-      this.drawPieChart('marriageChart', '婚姻状况', this.marriageData, ['未婚', '已婚', '离异']);
+      this.drawPieChart('genderChart', '', this.genderData, ['男', '女']);
+      this.drawRoundedRingChart('marriageChart', '婚姻状况', this.marriageData, ['未婚', '已婚', '离异']);
       this.drawPieChart('regionChart', '所属地区', this.regionData, ['中国大陆']);
-      this.drawPieChart('faceChart', '政治面貌', this.politicalFaceData, ['党员', '无党派人士', '群众']);
-      this.drawBarChart('jobChart', '职业', this.jobData, ['教师', '公务员','白领','学生','军人','警察']);
-      this.drawBarChart('ageChart', '年龄段', this.ageRangeData, ['70后', '80后','90后','00后']);
+      this.drawRoundedRingChart('faceChart', '政治面貌', this.politicalFaceData, ['群众', '党员', '无党派人士']);
+      this.drawRoseChart('jobChart', '职业', this.jobData, ['军人', '白领','学生','公务员','警察','教师']);
+      this.drawRoseChart('ageChart', '年龄段', this.ageRangeData, ['00后', '80后','70后','90后']);
       },
 
     drawPieChart(chartId, chartTitle, data, labels) {
       const chartDom = this.$refs[chartId] // 获取图表容器
       const myChart = echarts.init(chartDom) // 初始化图表
       const option = {
-        title: {
-          text: chartTitle
-        },
+        // title: {
+        //   text: chartTitle
+        // },
         tooltip: {
           trigger: 'item',
           formatter: '{a} <br/>{b} : {c} ({d}%)'
@@ -544,23 +462,92 @@ export default {
             type: 'pie',
             radius: '55%',
             data: labels.map((label, index) => ({ value: data[index], name: label }))
-            //   [
-            //   { value: this.genderData[0], name: 'Male' }, // 使用性别数据绘制饼图
-            //   { value: this.genderData[1], name: 'Female' },
-            // ]
           }
         ]
       };
       myChart.setOption(option) // 设置图表配置选项
     },
 
+    drawRoseChart(chartId, chartTitle, data, labels) {
+      const chartDom = this.$refs[chartId]; // 获取图表容器的DOM元素
+      const myChart = echarts.init(chartDom); // 初始化echarts实例
+
+      const option = {
+        tooltip: {
+          trigger: 'item',
+          formatter: '{a} <br/>{b} : {c} ({d}%)'
+        },
+        series: [
+          {
+            name: chartTitle,
+            type: 'pie',
+            radius: [30, 150], // 设置南丁格尔玫瑰图的内外半径范围，第一个值为内半径，第二个值为外半径
+            roseType: 'area', // 设置为南丁格尔玫瑰图类型
+            itemStyle: {
+              borderRadius: 8
+            },
+            data: labels.map((label, index) => ({ value: data[index], name: label }))
+          }
+        ]
+      };
+
+      myChart.setOption(option); // 将配置选项应用到图表中
+    },
+
+    drawRoundedRingChart(chartId, chartTitle, data, labels) {
+      const chartDom = this.$refs[chartId]; // 获取图表容器的 DOM 元素
+      const myChart = echarts.init(chartDom); // 初始化 ECharts 实例
+
+      const option = {
+        // title: {
+        //   text: chartTitle,
+        //   left: 'center'
+        // },
+        tooltip: {
+          trigger: 'item',
+          formatter: '{a} <br/>{b}: {c} ({d}%)'
+        },
+        series: [
+          {
+            name: chartTitle,
+            type: 'pie',
+            radius: ['35%', '70%'], // 设置内外半径
+            avoidLabelOverlap: false,
+            label: {
+              show: false,
+              position: 'center'
+            },
+            emphasis: {
+              label: {
+                show: true,
+                fontSize: '30',
+                fontWeight: 'bold'
+              }
+            },
+            labelLine: {
+              show: false
+            },
+            itemStyle: {
+              borderRadius: 10, // 设置圆角
+              borderColor: '#fff',
+              borderWidth: 2
+            },
+            data: labels.map((label, index) => ({ value: data[index], name: label }))
+          }
+        ]
+      };
+
+      myChart.setOption(option); // 将配置选项应用到图表中
+    },
+
+
     drawBarChart(chartId, chartTitle, data, labels) {
       const chartDom = this.$refs[chartId];
       const myChart = echarts.init(chartDom);
       const option = {
-        title: {
-          text: chartTitle
-        },
+        // title: {
+        //   text: chartTitle
+        // },
         tooltip: {
           trigger: 'axis',
           axisPointer: {
@@ -585,3 +572,22 @@ export default {
 
 }
 </script>
+<style>
+  .chartTitle {
+    font-weight: 700;
+    font-size: 20px;
+  }
+
+  .card1 {
+    margin-right: 20px;
+    margin-bottom: 20px;
+  }
+
+  .flex-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+</style>
