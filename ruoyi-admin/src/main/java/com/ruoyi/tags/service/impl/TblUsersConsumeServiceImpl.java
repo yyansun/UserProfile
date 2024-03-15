@@ -192,7 +192,34 @@ public class TblUsersConsumeServiceImpl implements ITblUsersConsumeService
         return res;
     }
 
+    public List<Integer> findAllFrequency()
+    {
+        logger.debug("#################Entering find==All===Frequency");
 
+        List<Integer> res = tblUsersConsumeMapper.findAllFrequency();
+        logger.debug("All Frequency: {}", res);
+
+        return res;
+    }
+
+    public List<Integer> findAllUnitPrice()
+    {
+        logger.debug("#################Entering find==All===UnitPrice");
+
+        List<Integer> res = tblUsersConsumeMapper.findAllUnitPrice();
+        logger.debug("All UnitPrice: {}", res);
+
+        return res;
+    }
+    public List<Integer> findAllMaxOrderAmount()
+    {
+        logger.debug("#################Entering find==All===MaxOrderAmount");
+
+        List<Integer> res = tblUsersConsumeMapper.findAllMaxOrderAmount();
+        logger.debug("All max order amount: {}", res);
+
+        return res;
+    }
 
     /**
      * 新增消费特征
