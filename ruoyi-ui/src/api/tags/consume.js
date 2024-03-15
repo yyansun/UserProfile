@@ -9,6 +9,13 @@ export function listConsume(query) {
   })
 }
 
+export function findData() {
+  return request({
+    url:'/tags/consume/datalist',
+    method: 'get'
+  })
+}
+
 // 查询消费特征详细
 export function getConsume(id) {
   return request({

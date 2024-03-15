@@ -28,6 +28,32 @@ public interface ITblUsersConsumeService
     public List<TblUsersConsume> selectTblUsersConsumeList(TblUsersConsume tblUsersConsume);
 
     /**
+    *   ===============查询各类别数值============
+    *
+    */
+
+    public List<Integer> findIsBlackList();
+    public List<Integer> findConsumptionCycle();
+    public List<Integer> findUnitPrice();
+    public List<Integer> findUnitPriceRange();
+    public List<Integer> findPayment();
+    public List<Integer> findMaxOrderAmount();
+    public List<Integer> findMaxOrderRange();
+    public List<Integer> findFrequency();
+    public List<Integer> findFreqValue();
+    public List<Integer> findReturnRate();
+    public List<Integer> findRetValue();
+    public List<Integer> findExchangeRate();
+    public List<Integer> findExcValue();
+    public List<Integer> findRfm();
+    public List<Integer> findPsm();
+
+
+
+
+
+
+    /**
      * 新增消费特征
      * 
      * @param tblUsersConsume 消费特征

@@ -1,6 +1,8 @@
 package com.ruoyi.tags.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +46,49 @@ public class TblUsersConsumeController extends BaseController
         startPage();
         List<TblUsersConsume> list = tblUsersConsumeService.selectTblUsersConsumeList(tblUsersConsume);
         return getDataTable(list);
+    }
+
+
+    /**
+     * 获取各类别数据
+     *
+     */
+    @GetMapping("/datalist")
+    public AjaxResult datalist() {
+        List<Integer> blackList = tblUsersConsumeService.findIsBlackList();
+        List<Integer> consumptionCycleList = tblUsersConsumeService.findConsumptionCycle();
+        List<Integer> unitPriceList = tblUsersConsumeService.findUnitPrice();
+        List<Integer> unitPriceRangeList = tblUsersConsumeService.findUnitPriceRange();
+        List<Integer> paymentList = tblUsersConsumeService.findPayment();
+        List<Integer> maxOrderAmountList = tblUsersConsumeService.findMaxOrderAmount();
+        List<Integer> maxOrderRangeList = tblUsersConsumeService.findMaxOrderRange();
+        List<Integer> frequencyList = tblUsersConsumeService.findFrequency();
+        List<Integer> freqValueList = tblUsersConsumeService.findFreqValue();
+        List<Integer> returnRateList = tblUsersConsumeService.findReturnRate();
+        List<Integer> retValueList = tblUsersConsumeService.findRetValue();
+        List<Integer> exchangeRateList = tblUsersConsumeService.findExchangeRate();
+        List<Integer> excValueList = tblUsersConsumeService.findExcValue();
+        List<Integer> rfmList = tblUsersConsumeService.findRfm();
+        List<Integer> psmList = tblUsersConsumeService.findPsm();
+
+        Map<String, List<Integer>> dataList = new HashMap<>();
+        dataList.put("blackList", blackList);
+        dataList.put("consumptionCycleList",consumptionCycleList);
+        dataList.put("unitPriceList ", unitPriceList);
+        dataList.put("unitPriceRangeList", unitPriceRangeList);
+        dataList.put("paymentList", paymentList);
+        dataList.put("maxOrderAmountList", maxOrderAmountList);
+        dataList.put("maxOrderRangeList ", maxOrderRangeList );
+        dataList.put("frequencyList", frequencyList);
+        dataList.put("freqValueList", freqValueList);
+        dataList.put("returnRateList", returnRateList);
+        dataList.put("retValueList", retValueList);
+        dataList.put("exchangeRateList", exchangeRateList);
+        dataList.put("excValueList", excValueList);
+        dataList.put("rfmList", rfmList);
+        dataList.put("psmList", psmList);
+
+        return AjaxResult.success(dataList);
     }
 
     /**
