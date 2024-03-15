@@ -70,15 +70,18 @@ public class TblUsersConsumeController extends BaseController
         List<Integer> excValueList = tblUsersConsumeService.findExcValue();
         List<Integer> rfmList = tblUsersConsumeService.findRfm();
         List<Integer> psmList = tblUsersConsumeService.findPsm();
+        List<Integer> allFrequencyList = tblUsersConsumeService.findAllFrequency();
+        List<Integer> allUnitPriceList = tblUsersConsumeService.findAllUnitPrice();
+        List<Integer> allMaxOrderAmountList = tblUsersConsumeService.findAllMaxOrderAmount();
 
         Map<String, List<Integer>> dataList = new HashMap<>();
         dataList.put("blackList", blackList);
         dataList.put("consumptionCycleList",consumptionCycleList);
-        dataList.put("unitPriceList ", unitPriceList);
+        dataList.put("unitPriceList", unitPriceList);
         dataList.put("unitPriceRangeList", unitPriceRangeList);
         dataList.put("paymentList", paymentList);
         dataList.put("maxOrderAmountList", maxOrderAmountList);
-        dataList.put("maxOrderRangeList ", maxOrderRangeList );
+        dataList.put("maxOrderRangeList", maxOrderRangeList );
         dataList.put("frequencyList", frequencyList);
         dataList.put("freqValueList", freqValueList);
         dataList.put("returnRateList", returnRateList);
@@ -87,6 +90,9 @@ public class TblUsersConsumeController extends BaseController
         dataList.put("excValueList", excValueList);
         dataList.put("rfmList", rfmList);
         dataList.put("psmList", psmList);
+        dataList.put("allFrequencyList", allFrequencyList);
+        dataList.put("allUnitPriceList", allUnitPriceList);
+        dataList.put("allMaxOrderAmountList", allMaxOrderAmountList);
 
         return AjaxResult.success(dataList);
     }
