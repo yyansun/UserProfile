@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.tags.mapper.TblUsersPreferenceMapper">
+    
+    <resultMap type="TblUsersPreference" id="TblUsersPreferenceResult">
+        <result property="id"    column="id"    />
+        <result property="username"    column="username"    />
+        <result property="loginCycle"    column="loginCycle"    />
+        <result property="frequency"    column="frequency"    />
+        <result property="freqValue"    column="freq_value"    />
+        <result property="timeSlot"    column="timeSlot"    />
+        <result property="usg"    column="usg"    />
+        <result property="rfe"    column="rfe"    />
+        <result property="top1"    column="top1"    />
+        <result property="top2"    column="top2"    />
+        <result property="top3"    column="top3"    />
+        <result property="top4"    column="top4"    />
+        <result property="top5"    column="top5"    />
+    </resultMap>
+
+    <sql id="selectTblUsersPreferenceVo">
+        select id, username, loginCycle, frequency, freq_value, timeSlot, usg, rfe, top1, top2, top3, top4, top5 from tbl_users_preference
+    </sql>
+
+    <select id="selectTblUsersPreferenceList" parameterType="TblUsersPreference" resultMap="TblUsersPreferenceResult">
+        <include refid="selectTblUsersPreferenceVo"/>
+        <where>  
+            <if test="username != null  and username != ''"> and username like concat('%', #{username}, '%')</if>
+            <if test="loginCycle != null "> and loginCycle = #{loginCycle}</if>
+            <if test="freqValue != null "> and freq_value = #{freqValue}</if>
+            <if test="timeSlot != null "> and timeSlot = #{timeSlot}</if>
+            <if test="usg != null "> and usg = #{usg}</if>
+            <if test="rfe != null "> and rfe = #{rfe}</if>
+        </where>
+    </select>
+    
+    <select id="selectTblUsersPreferenceById" parameterType="Integer" resultMap="TblUsersPreferenceResult">
+        <include refid="selectTblUsersPreferenceVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertTblUsersPreference" parameterType="TblUsersPreference" useGeneratedKeys="true" keyProperty="id">
+        insert into tbl_users_preference
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="username != null and username != ''">username,</if>
+            <if test="loginCycle != null">loginCycle,</if>
+            <if test="frequency != null">frequency,</if>
+            <if test="freqValue != null">freq_value,</if>
+            <if test="timeSlot != null">timeSlot,</if>
+            <if test="usg != null">usg,</if>
+            <if test="rfe != null">rfe,</if>
+            <if test="top1 != null">top1,</if>
+            <if test="top2 != null">top2,</if>
+            <if test="top3 != null">top3,</if>
+            <if test="top4 != null">top4,</if>
+            <if test="top5 != null">top5,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="username != null and username != ''">#{username},</if>
+            <if test="loginCycle != null">#{loginCycle},</if>
+            <if test="frequency != null">#{frequency},</if>
+            <if test="freqValue != null">#{freqValue},</if>
+            <if test="timeSlot != null">#{timeSlot},</if>
+            <if test="usg != null">#{usg},</if>
+            <if test="rfe != null">#{rfe},</if>
+            <if test="top1 != null">#{top1},</if>
+            <if test="top2 != null">#{top2},</if>
+            <if test="top3 != null">#{top3},</if>
+            <if test="top4 != null">#{top4},</if>
+            <if test="top5 != null">#{top5},</if>
+         </trim>
+    </insert>
+
+    <update id="updateTblUsersPreference" parameterType="TblUsersPreference">
+        update tbl_users_preference
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="username != null and username != ''">username = #{username},</if>
+            <if test="loginCycle != null">loginCycle = #{loginCycle},</if>
+            <if test="frequency != null">frequency = #{frequency},</if>
+            <if test="freqValue != null">freq_value = #{freqValue},</if>
+            <if test="timeSlot != null">timeSlot = #{timeSlot},</if>
+            <if test="usg != null">usg = #{usg},</if>
+            <if test="rfe != null">rfe = #{rfe},</if>
+            <if test="top1 != null">top1 = #{top1},</if>
+            <if test="top2 != null">top2 = #{top2},</if>
+            <if test="top3 != null">top3 = #{top3},</if>
+            <if test="top4 != null">top4 = #{top4},</if>
+            <if test="top5 != null">top5 = #{top5},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteTblUsersPreferenceById" parameterType="Integer">
+        delete from tbl_users_preference where id = #{id}
+    </delete>
+
+    <delete id="deleteTblUsersPreferenceByIds" parameterType="String">
+        delete from tbl_users_preference where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>
