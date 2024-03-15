@@ -49,7 +49,82 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <include refid="selectTblUsersConsumeVo"/>
         where id = #{id}
     </select>
-        
+
+    <!--    黑名单-->
+    <select id="findIsBlackList" parameterType="java.util.List">
+        SELECT count(*) from tbl_users_consume group by is_blackList;
+    </select>
+
+    <!--    消费周期-->
+    <select id="findConsumptionCycle" parameterType="java.util.List">
+        SELECT count(*) from tbl_users_consume group by consumptionCycle;
+    </select>
+
+    <!--    客单价-->
+    <select id="findUnitPrice" parameterType="java.util.List">
+        SELECT count(*) from tbl_users_consume group by unitPrice;
+    </select>
+
+    <!--    客单价等级-->
+    <select id="findUnitPriceRange" parameterType="java.util.List">
+        SELECT count(*) from tbl_users_consume group by unitPriceRange;
+    </select>
+
+    <!--    支付方式-->
+    <select id="findPayment" parameterType="java.util.List">
+        SELECT count(*) from tbl_users_consume group by payment;
+    </select>
+
+    <!--    客单最大值-->
+    <select id="findMaxOrderAmount" parameterType="java.util.List">
+        SELECT count(*) from tbl_users_consume group by maxOrderAmount;
+    </select>
+
+    <!--    客单最大值等级-->
+    <select id="findMaxOrderRange" parameterType="java.util.List">
+        SELECT count(*) from tbl_users_consume group by maxOrderRange;
+    </select>
+
+    <!--    消费频率-->
+    <select id="findFrequency" parameterType="java.util.List">
+        SELECT count(*) from tbl_users_consume group by frequency;
+    </select>
+
+    <!--    消费频率等级-->
+    <select id="findFreqValue" parameterType="java.util.List">
+        SELECT count(*) from tbl_users_consume group by freq_value;
+    </select>
+
+    <!--    退货次数-->
+    <select id="findReturnRate" parameterType="java.util.List">
+        SELECT count(*) from tbl_users_consume group by returnRate;
+    </select>
+
+    <!--    退货等级-->
+    <select id="findRetValue" parameterType="java.util.List">
+        SELECT count(*) from tbl_users_consume group by ret_value;
+    </select>
+
+    <!--    换货频率-->
+    <select id="findExchangeRate" parameterType="java.util.List">
+        SELECT count(*) from tbl_users_consume group by exchangeRate;
+    </select>
+
+    <!--    换货等级-->
+    <select id="findExcValue" parameterType="java.util.List">
+        SELECT count(*) from tbl_users_consume group by exc_value;
+    </select>
+
+    <!--    用户消费价值-->
+    <select id="findRfm" parameterType="java.util.List">
+        SELECT count(*) from tbl_users_consume group by rfm;
+    </select>
+
+    <!--    用户价格敏感度-->
+    <select id="findPsm" parameterType="java.util.List">
+        SELECT count(*) from tbl_users_consume group by psm;
+    </select>
+
     <insert id="insertTblUsersConsume" parameterType="TblUsersConsume" useGeneratedKeys="true" keyProperty="id">
         insert into tbl_users_consume
         <trim prefix="(" suffix=")" suffixOverrides=",">

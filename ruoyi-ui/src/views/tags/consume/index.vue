@@ -39,6 +39,7 @@
           />
         </el-select>
       </el-form-item>
+      <br>
       <el-form-item label="支付方式" prop="payment">
         <el-select v-model="queryParams.payment" placeholder="请选择支付方式" clearable>
           <el-option
@@ -79,6 +80,7 @@
           />
         </el-select>
       </el-form-item>
+      <br>
       <el-form-item label="换货频率" prop="excValue">
         <el-select v-model="queryParams.excValue" placeholder="请选择换货频率" clearable>
           <el-option
@@ -109,60 +111,16 @@
           />
         </el-select>
       </el-form-item>
+      <br>
       <el-form-item>
         <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
         <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
       </el-form-item>
     </el-form>
 
-    <el-row :gutter="10" class="mb8">
-      <el-col :span="1.5">
-        <el-button
-          type="primary"
-          plain
-          icon="el-icon-plus"
-          size="mini"
-          @click="handleAdd"
-          v-hasPermi="['tags:consume:add']"
-        >新增</el-button>
-      </el-col>
-      <el-col :span="1.5">
-        <el-button
-          type="success"
-          plain
-          icon="el-icon-edit"
-          size="mini"
-          :disabled="single"
-          @click="handleUpdate"
-          v-hasPermi="['tags:consume:edit']"
-        >修改</el-button>
-      </el-col>
-      <el-col :span="1.5">
-        <el-button
-          type="danger"
-          plain
-          icon="el-icon-delete"
-          size="mini"
-          :disabled="multiple"
-          @click="handleDelete"
-          v-hasPermi="['tags:consume:remove']"
-        >删除</el-button>
-      </el-col>
-      <el-col :span="1.5">
-        <el-button
-          type="warning"
-          plain
-          icon="el-icon-download"
-          size="mini"
-          @click="handleExport"
-          v-hasPermi="['tags:consume:export']"
-        >导出</el-button>
-      </el-col>
-      <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
-    </el-row>
 
     <el-table v-loading="loading" :data="consumeList" @selection-change="handleSelectionChange">
-      <el-table-column type="selection" width="55" align="center" />
+<!--      <el-table-column type="selection" width="55" align="center" />-->
       <el-table-column label="用户编号" align="center" prop="id" />
       <el-table-column label="用户名" align="center" prop="username" />
       <el-table-column label="黑名单" align="center" prop="isBlacklist">
@@ -193,24 +151,6 @@
       <el-table-column label="价格敏感度" align="center" prop="psm">
         <template slot-scope="scope">
           <dict-tag :options="dict.type.user_psm" :value="scope.row.psm"/>
-        </template>
-      </el-table-column>
-      <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
-        <template slot-scope="scope">
-          <el-button
-            size="mini"
-            type="text"
-            icon="el-icon-edit"
-            @click="handleUpdate(scope.row)"
-            v-hasPermi="['tags:consume:edit']"
-          >修改</el-button>
-          <el-button
-            size="mini"
-            type="text"
-            icon="el-icon-delete"
-            @click="handleDelete(scope.row)"
-            v-hasPermi="['tags:consume:remove']"
-          >删除</el-button>
         </template>
       </el-table-column>
     </el-table>
