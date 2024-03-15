@@ -125,6 +125,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         SELECT count(*) from tbl_users_consume group by psm;
     </select>
 
+    <!--    消费次数-->
+    <select id="findAllFrequency" parameterType="java.util.List">
+        SELECT frequency from tbl_users_consume
+    </select>
+
+    <!--    客单价全部-->
+    <select id="findAllUnitPrice" parameterType="java.util.List">
+        SELECT unitPrice from tbl_users_consume
+    </select>
+
+    <!--    最大客单价全部-->
+    <select id="findAllMaxOrderAmount" parameterType="java.util.List">
+        SELECT maxOrderAmount from tbl_users_consume
+    </select>
+
     <insert id="insertTblUsersConsume" parameterType="TblUsersConsume" useGeneratedKeys="true" keyProperty="id">
         insert into tbl_users_consume
         <trim prefix="(" suffix=")" suffixOverrides=",">

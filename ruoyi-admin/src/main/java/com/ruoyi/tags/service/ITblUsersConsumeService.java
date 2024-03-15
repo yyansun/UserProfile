@@ -47,6 +47,9 @@ public interface ITblUsersConsumeService
     public List<Integer> findExcValue();
     public List<Integer> findRfm();
     public List<Integer> findPsm();
+    public List<Integer> findAllFrequency();
+    public List<Integer> findAllUnitPrice();
+    public List<Integer> findAllMaxOrderAmount();
 
 
 

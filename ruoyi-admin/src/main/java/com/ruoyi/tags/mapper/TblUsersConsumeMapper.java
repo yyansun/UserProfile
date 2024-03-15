@@ -48,6 +48,10 @@ public interface TblUsersConsumeMapper
     public List<Integer> findRfm();
     public List<Integer> findPsm();
 
+    public List<Integer> findAllFrequency();
+    public List<Integer> findAllUnitPrice();
+    public List<Integer> findAllMaxOrderAmount();
+
     /**
      * 新增消费特征
      * 
