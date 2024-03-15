@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.tags.mapper.TblUsersConsumeMapper">
+    
+    <resultMap type="TblUsersConsume" id="TblUsersConsumeResult">
+        <result property="id"    column="id"    />
+        <result property="username"    column="username"    />
+        <result property="isBlacklist"    column="is_blackList"    />
+        <result property="consumptionCycle"    column="consumptionCycle"    />
+        <result property="unitPrice"    column="unitPrice"    />
+        <result property="unitPriceRange"    column="unitPriceRange"    />
+        <result property="payment"    column="payment"    />
+        <result property="maxOrderAmount"    column="maxOrderAmount"    />
+        <result property="maxOrderRange"    column="maxOrderRange"    />
+        <result property="frequency"    column="frequency"    />
+        <result property="freqValue"    column="freq_value"    />
+        <result property="returnRate"    column="returnRate"    />
+        <result property="retValue"    column="ret_value"    />
+        <result property="exchangeRate"    column="exchangeRate"    />
+        <result property="excValue"    column="exc_value"    />
+        <result property="rfm"    column="rfm"    />
+        <result property="psm"    column="psm"    />
+    </resultMap>
+
+    <sql id="selectTblUsersConsumeVo">
+        select id, username, is_blackList, consumptionCycle, unitPrice, unitPriceRange, payment, maxOrderAmount, maxOrderRange, frequency, freq_value, returnRate, ret_value, exchangeRate, exc_value, rfm, psm from tbl_users_consume
+    </sql>
+
+    <select id="selectTblUsersConsumeList" parameterType="TblUsersConsume" resultMap="TblUsersConsumeResult">
+        <include refid="selectTblUsersConsumeVo"/>
+        <where>  
+            <if test="username != null  and username != ''"> and username like concat('%', #{username}, '%')</if>
+            <if test="isBlacklist != null "> and is_blackList = #{isBlacklist}</if>
+            <if test="consumptionCycle != null  and consumptionCycle != ''"> and consumptionCycle = #{consumptionCycle}</if>
+            <if test="unitPriceRange != null "> and unitPriceRange = #{unitPriceRange}</if>
+            <if test="payment != null "> and payment = #{payment}</if>
+            <if test="maxOrderRange != null "> and maxOrderRange = #{maxOrderRange}</if>
+            <if test="freqValue != null "> and freq_value = #{freqValue}</if>
+            <if test="retValue != null "> and ret_value = #{retValue}</if>
+            <if test="excValue != null "> and exc_value = #{excValue}</if>
+            <if test="rfm != null "> and rfm = #{rfm}</if>
+            <if test="psm != null "> and psm = #{psm}</if>
+        </where>
+    </select>
+    
+    <select id="selectTblUsersConsumeById" parameterType="Integer" resultMap="TblUsersConsumeResult">
+        <include refid="selectTblUsersConsumeVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertTblUsersConsume" parameterType="TblUsersConsume" useGeneratedKeys="true" keyProperty="id">
+        insert into tbl_users_consume
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="username != null">username,</if>
+            <if test="isBlacklist != null">is_blackList,</if>
+            <if test="consumptionCycle != null">consumptionCycle,</if>
+            <if test="unitPrice != null">unitPrice,</if>
+            <if test="unitPriceRange != null">unitPriceRange,</if>
+            <if test="payment != null">payment,</if>
+            <if test="maxOrderAmount != null">maxOrderAmount,</if>
+            <if test="maxOrderRange != null">maxOrderRange,</if>
+            <if test="frequency != null">frequency,</if>
+            <if test="freqValue != null">freq_value,</if>
+            <if test="returnRate != null">returnRate,</if>
+            <if test="retValue != null">ret_value,</if>
+            <if test="exchangeRate != null">exchangeRate,</if>
+            <if test="excValue != null">exc_value,</if>
+            <if test="rfm != null">rfm,</if>
+            <if test="psm != null">psm,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="username != null">#{username},</if>
+            <if test="isBlacklist != null">#{isBlacklist},</if>
+            <if test="consumptionCycle != null">#{consumptionCycle},</if>
+            <if test="unitPrice != null">#{unitPrice},</if>
+            <if test="unitPriceRange != null">#{unitPriceRange},</if>
+            <if test="payment != null">#{payment},</if>
+            <if test="maxOrderAmount != null">#{maxOrderAmount},</if>
+            <if test="maxOrderRange != null">#{maxOrderRange},</if>
+            <if test="frequency != null">#{frequency},</if>
+            <if test="freqValue != null">#{freqValue},</if>
+            <if test="returnRate != null">#{returnRate},</if>
+            <if test="retValue != null">#{retValue},</if>
+            <if test="exchangeRate != null">#{exchangeRate},</if>
+            <if test="excValue != null">#{excValue},</if>
+            <if test="rfm != null">#{rfm},</if>
+            <if test="psm != null">#{psm},</if>
+         </trim>
+    </insert>
+
+    <update id="updateTblUsersConsume" parameterType="TblUsersConsume">
+        update tbl_users_consume
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="username != null">username = #{username},</if>
+            <if test="isBlacklist != null">is_blackList = #{isBlacklist},</if>
+            <if test="consumptionCycle != null">consumptionCycle = #{consumptionCycle},</if>
+            <if test="unitPrice != null">unitPrice = #{unitPrice},</if>
+            <if test="unitPriceRange != null">unitPriceRange = #{unitPriceRange},</if>
+            <if test="payment != null">payment = #{payment},</if>
+            <if test="maxOrderAmount != null">maxOrderAmount = #{maxOrderAmount},</if>
+            <if test="maxOrderRange != null">maxOrderRange = #{maxOrderRange},</if>
+            <if test="frequency != null">frequency = #{frequency},</if>
+            <if test="freqValue != null">freq_value = #{freqValue},</if>
+            <if test="returnRate != null">returnRate = #{returnRate},</if>
+            <if test="retValue != null">ret_value = #{retValue},</if>
+            <if test="exchangeRate != null">exchangeRate = #{exchangeRate},</if>
+            <if test="excValue != null">exc_value = #{excValue},</if>
+            <if test="rfm != null">rfm = #{rfm},</if>
+            <if test="psm != null">psm = #{psm},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteTblUsersConsumeById" parameterType="Integer">
+        delete from tbl_users_consume where id = #{id}
+    </delete>
+
+    <delete id="deleteTblUsersConsumeByIds" parameterType="String">
+        delete from tbl_users_consume where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>
