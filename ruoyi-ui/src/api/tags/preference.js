@@ -9,6 +9,13 @@ export function listPreference(query) {
   })
 }
 
+export function findBy() {
+  return request({
+    url:'/tags/preference/datalist',
+    method: 'get'
+  })
+}
+
 // 查询兴趣特征详细
 export function getPreference(id) {
   return request({

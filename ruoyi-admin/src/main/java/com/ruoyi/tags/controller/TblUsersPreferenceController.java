@@ -1,6 +1,9 @@
 package com.ruoyi.tags.controller;
 
+import java.awt.datatransfer.FlavorEvent;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +49,35 @@ public class TblUsersPreferenceController extends BaseController
         return getDataTable(list);
     }
 
+    @GetMapping("/datalist")
+    public AjaxResult datalist() {
+        List<Integer> loginCycleList = tblUsersPreferenceService.findByLoginCycle();
+        List<Float> frequencyList = tblUsersPreferenceService.findByFrequency();
+        List<Integer> freqValueList = tblUsersPreferenceService.findByFreqValue();
+        List<Integer> timeSlotList = tblUsersPreferenceService.findByTimeSlot();
+        List<Integer> usgList = tblUsersPreferenceService.findByUsg();
+        List<Integer> rfeList = tblUsersPreferenceService.findByRfe();
+        List<String> top1List = tblUsersPreferenceService.findBytop1();
+        List<String> top2List = tblUsersPreferenceService.findBytop2();
+        List<String> top3List = tblUsersPreferenceService.findBytop3();
+        List<String> top4List = tblUsersPreferenceService.findBytop4();
+        List<String> top5List = tblUsersPreferenceService.findBytop5();
+
+        Map<String, Object> data = new HashMap<>();
+        data.put("loginCycleList", loginCycleList);
+        data.put("frequencyList", frequencyList);
+        data.put("freqValueList", freqValueList);
+        data.put("timeSlotList", timeSlotList);
+        data.put("usgList", usgList);
+        data.put("rfeList", rfeList);
+        data.put("top1List", top1List);
+        data.put("top2List", top2List);
+        data.put("top3List", top3List);
+        data.put("top4List", top4List);
+        data.put("top5List", top5List);
+
+        return AjaxResult.success(data);
+    }
     /**
      * 导出兴趣特征列表
      */
