@@ -112,7 +112,7 @@ export default {
     drawCharts() {
       this.drawPieChart('usgChart', '购物性别', this.usgData, ['男', '女']);
       this.drawHistogram('frequencyChart', '每月消费次数', this.frequencyData);
-      this.drawPieChart('loginCycleChart', '最近登录', this.loginCycleData, ['军人', '白领', '学生', '公务员', '警察', '教师']);
+      this.drawPieChart('loginCycleChart', '最近登录', this.loginCycleData, ['1天内', '7天内', '14天内', '30天内', '一个月前']);
       this.drawRoseChart('rfeChart', '活跃度', this.rfeData, ['非常活跃', '活跃', '不活跃', '非常不活跃']);
       this.drawRoseChart('timeSlotChart', '活跃度', this.timeSlotData, ['早晨', '上午','中午', '下午', '傍晚', '凌晨']);
       this.drawBarChart('topChart', '商品推荐', this.top1Data, this.top2Data, this.top3Data, this.top4Data, this.top5Data);
@@ -154,8 +154,11 @@ export default {
             type: 'shadow'
           }
         },
+        grid:{
+          right:80
+        },
         xAxis: {
-          name: '热度商品编号',
+          name: '编号',
           data: [6603, 10935, 9371, 6395, 11949],
         },
         yAxis: {

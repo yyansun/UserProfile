@@ -28,7 +28,7 @@
       <el-row>
         <el-col :span="8">
           <el-card class="card1">
-            <div slot="header"><span class="chartTitle">支付方式\黑名单分布</span></div>
+            <div slot="header"><span class="chartTitle">支付方式</span></div>
             <div ref="pieChart" class="card-img" style="width: 400px; height: 400px;"></div>
           </el-card>
         </el-col>
