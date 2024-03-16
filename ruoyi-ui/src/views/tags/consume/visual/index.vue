@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import {findData} from "@/api/tags/consume";
+import {findConsume} from "@/api/tags/consume";
 import * as echarts from "echarts";
 
 export default {
@@ -80,7 +80,7 @@ export default {
   methods: {
     fetchData() {
       this.loading = true;
-      findData()
+      findConsume()
         .then(response => {
           console.log('==================Data:', response.data);
           this.allFrequencyData = response.data.allFrequencyList;

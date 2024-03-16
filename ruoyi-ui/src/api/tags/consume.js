@@ -9,7 +9,7 @@ export function listConsume(query) {
   })
 }
 
-export function findData() {
+export function findConsume() {
   return request({
     url:'/tags/consume/datalist',
     method: 'get'

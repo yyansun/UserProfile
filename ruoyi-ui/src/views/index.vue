@@ -31,6 +31,14 @@
   </div>
 </template>
 
+<script>
+import {findBy} from "@/api/tags/portrait";
+import * as echarts from "echarts";
+
+
+
+</script>
+
 <style>
   .box {
     margin: 20px;
