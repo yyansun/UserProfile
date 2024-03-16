@@ -437,7 +437,7 @@ export default {
     },
 
     drawCharts() {
-      this.drawPieChart('genderChart', '', this.genderData, ['男', '女']);
+      this.drawPieChart('genderChart', '性别', this.genderData, ['男', '女']);
       this.drawRoundedRingChart('marriageChart', '婚姻状况', this.marriageData, ['未婚', '已婚', '离异']);
       this.drawPieChart('regionChart', '所属地区', this.regionData, ['中国大陆']);
       this.drawRoundedRingChart('faceChart', '政治面貌', this.politicalFaceData, ['群众', '党员', '无党派人士']);
