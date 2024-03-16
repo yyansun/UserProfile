@@ -29,6 +29,7 @@
           />
         </el-select>
       </el-form-item>
+      <br>
       <el-form-item label="浏览时段" prop="timeSlot">
         <el-select v-model="queryParams.timeSlot" placeholder="请选择浏览时段" clearable>
           <el-option
@@ -59,17 +60,17 @@
           />
         </el-select>
       </el-form-item>
+      <br>
       <el-form-item>
-        <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
-        <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
+        <el-button type="primary" icon="el-icon-search" size="medium" @click="handleQuery">搜索</el-button>
+        <el-button icon="el-icon-refresh" size="medium" @click="resetQuery">重置</el-button>
       </el-form-item>
     </el-form>
 
-
-    </el-row>
+<!--    </el-row>-->
 
     <el-table v-loading="loading" :data="preferenceList" @selection-change="handleSelectionChange">
-      <el-table-column type="selection" width="55" align="center" />
+<!--      <el-table-column type="selection" width="55" align="center" />-->
       <el-table-column label="用户编号" align="center" prop="id" />
       <el-table-column label="用户名" align="center" prop="username" />
       <el-table-column label="最近登录" align="center" prop="loginCycle">
@@ -98,24 +99,6 @@
       <el-table-column label="商品推荐top3" align="center" prop="top3" />
       <el-table-column label="商品推荐top4" align="center" prop="top4" />
       <el-table-column label="商品推荐top5" align="center" prop="top5" />
-      <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
-        <template slot-scope="scope">
-          <el-button
-            size="mini"
-            type="text"
-            icon="el-icon-edit"
-            @click="handleUpdate(scope.row)"
-            v-hasPermi="['tags:preference:edit']"
-          >修改</el-button>
-          <el-button
-            size="mini"
-            type="text"
-            icon="el-icon-delete"
-            @click="handleDelete(scope.row)"
-            v-hasPermi="['tags:preference:remove']"
-          >删除</el-button>
-        </template>
-      </el-table-column>
     </el-table>
 
     <pagination

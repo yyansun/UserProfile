@@ -1,6 +1,9 @@
 package com.ruoyi.tags.service.impl;
 
 import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.ruoyi.tags.mapper.TblUserProfileMapper;
@@ -19,6 +22,8 @@ public class TblUserProfileServiceImpl implements ITblUserProfileService
     @Autowired
     private TblUserProfileMapper tblUserProfileMapper;
 
+    private static final Logger logger = (Logger) LoggerFactory.getLogger(TblUsersPortraitServiceImpl.class);
+
     /**
      * 查询单人画像
      * 
@@ -28,7 +33,12 @@ public class TblUserProfileServiceImpl implements ITblUserProfileService
     @Override
     public TblUserProfile selectTblUserProfileByUserId(Long userId)
     {
-        return tblUserProfileMapper.selectTblUserProfileByUserId(userId);
+        logger.debug("#############根据ID查询单人用户画像===================");
+
+        TblUserProfile res = tblUserProfileMapper.selectTblUserProfileByUserId(userId);
+        logger.debug("tblUserProfile: {}", res);
+//        return tblUserProfileMapper.selectTblUserProfileByUserId(userId);
+        return res;
     }
 
     /**

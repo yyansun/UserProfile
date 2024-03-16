@@ -9,7 +9,7 @@ export function listPreference(query) {
   })
 }
 
-export function findBy() {
+export function findPreference() {
   return request({
     url:'/tags/preference/datalist',
     method: 'get'
