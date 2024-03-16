@@ -35,7 +35,8 @@ export default {
   },
   data() {
     return {
-      title: process.env.VUE_APP_TITLE,
+      // title: process.env.VUE_APP_TITLE,
+      title: '电商用户画像分析系统',
       logo: logoImg
     }
   }
