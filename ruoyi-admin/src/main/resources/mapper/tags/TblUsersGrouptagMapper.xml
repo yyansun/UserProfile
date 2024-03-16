@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.tags.mapper.TblUsersGrouptagMapper">
+    
+    <resultMap type="TblUsersGrouptag" id="TblUsersGrouptagResult">
+        <result property="id"    column="id"    />
+        <result property="username"    column="username"    />
+        <result property="gender"    column="gender"    />
+        <result property="job"    column="job"    />
+        <result property="ageRange"    column="ageRange"    />
+        <result property="consumptionCycle"    column="consumptionCycle"    />
+        <result property="rfm"    column="rfm"    />
+        <result property="psm"    column="psm"    />
+        <result property="loginCycle"    column="loginCycle"    />
+        <result property="freqValue"    column="freq_value"    />
+        <result property="timeSlot"    column="timeSlot"    />
+        <result property="usg"    column="usg"    />
+        <result property="rfe"    column="rfe"    />
+    </resultMap>
+
+    <sql id="selectTblUsersGrouptagVo">
+        select id, username, gender, job, ageRange, consumptionCycle, rfm, psm, loginCycle, freq_value, timeSlot, usg, rfe from tbl_users_grouptag
+    </sql>
+
+    <select id="selectTblUsersGrouptagList" parameterType="TblUsersGrouptag" resultMap="TblUsersGrouptagResult">
+        <include refid="selectTblUsersGrouptagVo"/>
+        <where>  
+            <if test="gender != null "> and gender = #{gender}</if>
+            <if test="job != null "> and job = #{job}</if>
+            <if test="ageRange != null  and ageRange != ''"> and ageRange = #{ageRange}</if>
+            <if test="consumptionCycle != null  and consumptionCycle != ''"> and consumptionCycle = #{consumptionCycle}</if>
+            <if test="rfm != null "> and rfm = #{rfm}</if>
+            <if test="psm != null "> and psm = #{psm}</if>
+            <if test="loginCycle != null "> and loginCycle = #{loginCycle}</if>
+            <if test="freqValue != null "> and freq_value = #{freqValue}</if>
+            <if test="timeSlot != null "> and timeSlot = #{timeSlot}</if>
+            <if test="usg != null "> and usg = #{usg}</if>
+            <if test="rfe != null "> and rfe = #{rfe}</if>
+        </where>
+    </select>
+    
+    <select id="selectTblUsersGrouptagById" parameterType="Integer" resultMap="TblUsersGrouptagResult">
+        <include refid="selectTblUsersGrouptagVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertTblUsersGrouptag" parameterType="TblUsersGrouptag" useGeneratedKeys="true" keyProperty="id">
+        insert into tbl_users_grouptag
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="username != null">username,</if>
+            <if test="gender != null">gender,</if>
+            <if test="job != null">job,</if>
+            <if test="ageRange != null">ageRange,</if>
+            <if test="consumptionCycle != null">consumptionCycle,</if>
+            <if test="rfm != null">rfm,</if>
+            <if test="psm != null">psm,</if>
+            <if test="loginCycle != null">loginCycle,</if>
+            <if test="freqValue != null">freq_value,</if>
+            <if test="timeSlot != null">timeSlot,</if>
+            <if test="usg != null">usg,</if>
+            <if test="rfe != null">rfe,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="username != null">#{username},</if>
+            <if test="gender != null">#{gender},</if>
+            <if test="job != null">#{job},</if>
+            <if test="ageRange != null">#{ageRange},</if>
+            <if test="consumptionCycle != null">#{consumptionCycle},</if>
+            <if test="rfm != null">#{rfm},</if>
+            <if test="psm != null">#{psm},</if>
+            <if test="loginCycle != null">#{loginCycle},</if>
+            <if test="freqValue != null">#{freqValue},</if>
+            <if test="timeSlot != null">#{timeSlot},</if>
+            <if test="usg != null">#{usg},</if>
+            <if test="rfe != null">#{rfe},</if>
+         </trim>
+    </insert>
+
+    <update id="updateTblUsersGrouptag" parameterType="TblUsersGrouptag">
+        update tbl_users_grouptag
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="username != null">username = #{username},</if>
+            <if test="gender != null">gender = #{gender},</if>
+            <if test="job != null">job = #{job},</if>
+            <if test="ageRange != null">ageRange = #{ageRange},</if>
+            <if test="consumptionCycle != null">consumptionCycle = #{consumptionCycle},</if>
+            <if test="rfm != null">rfm = #{rfm},</if>
+            <if test="psm != null">psm = #{psm},</if>
+            <if test="loginCycle != null">loginCycle = #{loginCycle},</if>
+            <if test="freqValue != null">freq_value = #{freqValue},</if>
+            <if test="timeSlot != null">timeSlot = #{timeSlot},</if>
+            <if test="usg != null">usg = #{usg},</if>
+            <if test="rfe != null">rfe = #{rfe},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteTblUsersGrouptagById" parameterType="Integer">
+        delete from tbl_users_grouptag where id = #{id}
+    </delete>
+
+    <delete id="deleteTblUsersGrouptagByIds" parameterType="String">
+        delete from tbl_users_grouptag where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>
