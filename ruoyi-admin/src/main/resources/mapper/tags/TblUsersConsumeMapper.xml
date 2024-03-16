@@ -132,12 +132,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
     <!--    客单价全部-->
     <select id="findAllUnitPrice" parameterType="java.util.List">
-        SELECT unitPrice from tbl_users_consume
+        <![CDATA[
+    SELECT unitPrice FROM tbl_users_consume WHERE maxOrderAmount < 140000
+    ]]>
     </select>
 
     <!--    最大客单价全部-->
     <select id="findAllMaxOrderAmount" parameterType="java.util.List">
-        SELECT maxOrderAmount from tbl_users_consume
+        <![CDATA[
+    SELECT maxOrderAmount FROM tbl_users_consume WHERE maxOrderAmount < 140000
+    ]]>
     </select>
 
     <insert id="insertTblUsersConsume" parameterType="TblUsersConsume" useGeneratedKeys="true" keyProperty="id">
