@@ -41,6 +41,7 @@
           />
         </el-select>
       </el-form-item>
+      <br>
       <el-form-item label="消费能力" prop="rfm">
         <el-select v-model="queryParams.rfm" placeholder="请选择消费能力" clearable>
           <el-option
@@ -81,6 +82,7 @@
           />
         </el-select>
       </el-form-item>
+      <br>
       <el-form-item label="浏览时段" prop="timeSlot">
         <el-select v-model="queryParams.timeSlot" placeholder="请选择浏览时段" clearable>
           <el-option
@@ -111,60 +113,15 @@
           />
         </el-select>
       </el-form-item>
+      <br>
       <el-form-item>
         <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
         <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
       </el-form-item>
     </el-form>
 
-    <el-row :gutter="10" class="mb8">
-      <el-col :span="1.5">
-        <el-button
-          type="primary"
-          plain
-          icon="el-icon-plus"
-          size="mini"
-          @click="handleAdd"
-          v-hasPermi="['tags:grouptag:add']"
-        >新增</el-button>
-      </el-col>
-      <el-col :span="1.5">
-        <el-button
-          type="success"
-          plain
-          icon="el-icon-edit"
-          size="mini"
-          :disabled="single"
-          @click="handleUpdate"
-          v-hasPermi="['tags:grouptag:edit']"
-        >修改</el-button>
-      </el-col>
-      <el-col :span="1.5">
-        <el-button
-          type="danger"
-          plain
-          icon="el-icon-delete"
-          size="mini"
-          :disabled="multiple"
-          @click="handleDelete"
-          v-hasPermi="['tags:grouptag:remove']"
-        >删除</el-button>
-      </el-col>
-      <el-col :span="1.5">
-        <el-button
-          type="warning"
-          plain
-          icon="el-icon-download"
-          size="mini"
-          @click="handleExport"
-          v-hasPermi="['tags:grouptag:export']"
-        >导出</el-button>
-      </el-col>
-      <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
-    </el-row>
-
     <el-table v-loading="loading" :data="grouptagList" @selection-change="handleSelectionChange">
-      <el-table-column type="selection" width="55" align="center" />
+<!--      <el-table-column type="selection" width="55" align="center" />-->
       <el-table-column label="用户编号" align="center" prop="id" />
       <el-table-column label="用户名" align="center" prop="username" />
       <el-table-column label="性别" align="center" prop="gender">
@@ -222,26 +179,8 @@
           <dict-tag :options="dict.type.user_rfe" :value="scope.row.rfe"/>
         </template>
       </el-table-column>
-      <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
-        <template slot-scope="scope">
-          <el-button
-            size="mini"
-            type="text"
-            icon="el-icon-edit"
-            @click="handleUpdate(scope.row)"
-            v-hasPermi="['tags:grouptag:edit']"
-          >修改</el-button>
-          <el-button
-            size="mini"
-            type="text"
-            icon="el-icon-delete"
-            @click="handleDelete(scope.row)"
-            v-hasPermi="['tags:grouptag:remove']"
-          >删除</el-button>
-        </template>
-      </el-table-column>
     </el-table>
-    
+
     <pagination
       v-show="total>0"
       :total="total"

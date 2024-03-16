@@ -1,19 +1,10 @@
 <template>
   <div class="app-container">
-    <div style="margin-left: 20px">
     <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">
       <el-form-item label="用户名" prop="username">
         <el-input
           v-model="queryParams.username"
           placeholder="请输入用户名"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="联系方式" prop="mobile">
-        <el-input
-          v-model="queryParams.mobile"
-          placeholder="请输入联系方式"
           clearable
           @keyup.enter.native="handleQuery"
         />
@@ -38,21 +29,19 @@
           />
         </el-select>
       </el-form-item>
+      <el-form-item label="联系方式" prop="mobile">
+        <el-input
+          v-model="queryParams.mobile"
+          placeholder="请输入联系方式"
+          clearable
+          @keyup.enter.native="handleQuery"
+        />
+      </el-form-item>
       <br>
       <el-form-item label="年龄段" prop="ageRange">
         <el-select v-model="queryParams.ageRange" placeholder="请选择年龄段" clearable>
           <el-option
             v-for="dict in dict.type.user_age"
-            :key="dict.value"
-            :label="dict.label"
-            :value="dict.value"
-          />
-        </el-select>
-      </el-form-item>
-      <el-form-item label="政治面貌" prop="politicalFace">
-        <el-select v-model="queryParams.politicalFace" placeholder="请选择政治面貌" clearable>
-          <el-option
-            v-for="dict in dict.type.user_political_face"
             :key="dict.value"
             :label="dict.label"
             :value="dict.value"
@@ -79,94 +68,91 @@
           />
         </el-select>
       </el-form-item>
+      <el-form-item label="政治面貌" prop="politicalFace">
+        <el-select v-model="queryParams.politicalFace" placeholder="请选择政治面貌" clearable>
+          <el-option
+            v-for="dict in dict.type.user_political_face"
+            :key="dict.value"
+            :label="dict.label"
+            :value="dict.value"
+          />
+        </el-select>
+      </el-form-item>
 
       <br>
-      <el-form-item style="margin-left: 30px">
+      <el-form-item>
         <el-button type="primary" icon="el-icon-search" size="medium" @click="handleQuery">搜索</el-button>
         <el-button icon="el-icon-refresh" size="medium" @click="resetQuery">重置</el-button>
       </el-form-item>
     </el-form>
-    </div>
-    <el-row>
-      <el-col :span="16">
-        <el-card style="width: 890px; margin-left: 20px">
-          <el-table v-loading="loading" :data="portraitList" @selection-change="handleSelectionChange">
-            <el-table-column label="用户编号" align="center" prop="id" width="80"/>
-            <el-table-column label="用户名" align="center" prop="username" width="80"/>
-            <el-table-column label="性别" align="center" prop="gender" width="60">
-              <template slot-scope="scope">
-                <dict-tag :options="dict.type.user_gender" :value="scope.row.gender"/>
-              </template>
-            </el-table-column>
-            <el-table-column label="生日" align="center" prop="birthday" width="100">
-              <template slot-scope="scope">
-                <span>{{ parseTime(scope.row.birthday, '{y}-{m}-{d}') }}</span>
-              </template>
-            </el-table-column>
-            <el-table-column label="职业" align="center" prop="job">
-              <template slot-scope="scope">
-                <dict-tag :options="dict.type.user_job" :value="scope.row.job"/>
-              </template>
-            </el-table-column>
-            <el-table-column label="联系方式" align="center" prop="mobile" width="110"/>
-            <el-table-column label="政治面貌" align="center" prop="politicalFace">
-              <template slot-scope="scope">
-                <dict-tag :options="dict.type.user_political_face" :value="scope.row.politicalFace"/>
-              </template>
-            </el-table-column>
-            <el-table-column label="所属地区" align="center" prop="region">
-              <template slot-scope="scope">
-                <dict-tag :options="dict.type.user_region" :value="scope.row.region"/>
-              </template>
-            </el-table-column>
-            <el-table-column label="婚姻状况" align="center" prop="marriage">
-              <template slot-scope="scope">
-                <dict-tag :options="dict.type.user_marriage" :value="scope.row.marriage"/>
-              </template>
-            </el-table-column>
-          </el-table>
 
-          <pagination
-            v-show="total>0"
-            :total="total"
-            :page.sync="queryParams.pageNum"
-            :limit.sync="queryParams.pageSize"
-            @pagination="getList"
-          />
-        </el-card>
-      </el-col>
-      <el-col :span="8">
-        <el-card>
-          <h1>TEST</h1>图1
 
-        </el-card>
-      </el-col>
-    </el-row>
-<!--    &lt;!&ndash; 添加或修改用户特征对话框 &ndash;&gt;-->
-<!--    <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>-->
-<!--      <el-form ref="form" :model="form" :rules="rules" label-width="80px">-->
-<!--      </el-form>-->
-<!--      <div slot="footer" class="dialog-footer">-->
-<!--        <el-button type="primary" @click="submitForm">确 定</el-button>-->
-<!--        <el-button @click="cancel">取 消</el-button>-->
-<!--      </div>-->
-<!--    </el-dialog>-->
+    <el-table v-loading="loading" :data="portraitList" @selection-change="handleSelectionChange">
+<!--      <el-table-column type="selection" width="55" align="center" />-->
+      <el-table-column label="用户编号" align="center" prop="id" />
+      <el-table-column label="用户名" align="center" prop="username" />
+      <el-table-column label="性别" align="center" prop="gender">
+        <template slot-scope="scope">
+          <dict-tag :options="dict.type.user_gender" :value="scope.row.gender"/>
+        </template>
+      </el-table-column>
+      <el-table-column label="生日" align="center" prop="birthday" width="180">
+        <template slot-scope="scope">
+          <span>{{ parseTime(scope.row.birthday, '{y}-{m}-{d}') }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column label="职业" align="center" prop="job">
+        <template slot-scope="scope">
+          <dict-tag :options="dict.type.user_job" :value="scope.row.job"/>
+        </template>
+      </el-table-column>
+      <el-table-column label="联系方式" align="center" prop="mobile" />
+      <el-table-column label="政治面貌" align="center" prop="politicalFace">
+        <template slot-scope="scope">
+          <dict-tag :options="dict.type.user_political_face" :value="scope.row.politicalFace"/>
+        </template>
+      </el-table-column>
+      <el-table-column label="所属地区" align="center" prop="region">
+        <template slot-scope="scope">
+          <dict-tag :options="dict.type.user_region" :value="scope.row.region"/>
+        </template>
+      </el-table-column>
+      <el-table-column label="婚姻状况" align="center" prop="marriage">
+        <template slot-scope="scope">
+          <dict-tag :options="dict.type.user_marriage" :value="scope.row.marriage"/>
+        </template>
+      </el-table-column>
+    </el-table>
+
+    <pagination
+      v-show="total>0"
+      :total="total"
+      :page.sync="queryParams.pageNum"
+      :limit.sync="queryParams.pageSize"
+      @pagination="getList"
+    />
+
+    <!-- 添加或修改用户特征对话框 -->
+    <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
+      <el-form ref="form" :model="form" :rules="rules" label-width="80px">
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button type="primary" @click="submitForm">确 定</el-button>
+        <el-button @click="cancel">取 消</el-button>
+      </div>
+    </el-dialog>
   </div>
-
 </template>
 
 <script>
 import { listPortrait, getPortrait, delPortrait, addPortrait, updatePortrait } from "@/api/tags/portrait";
-import * as echarts from "echarts";
 
 export default {
-  name: "Visual",
+  name: "Portrait",
   dicts: ['user_age', 'user_gender', 'user_region', 'user_political_face', 'user_marriage', 'user_job'],
   data() {
     return {
       // 遮罩层
-      genderData: [],
-      // 初始性别数据，假设有两个性别，初始值为0
       loading: true,
       // 选中数组
       ids: [],
@@ -207,19 +193,9 @@ export default {
       }
     };
   },
-
-
-
-  mounted() {
-    this.$nextTick(() => {
-      this.fetchGenderData();
-    });
-  },
-
   created() {
     this.getList();
   },
-
   methods: {
     /** 查询用户特征列表 */
     getList() {
@@ -230,54 +206,6 @@ export default {
         this.loading = false;
       });
     },
-
-    fetchGenderData() {
-      this.loading = true;
-      findByGender()
-        .then(response => {
-          console.log('================Gender data:', response.data);
-          this.genderData = response.data;
-          this.$nextTick(() => {
-            this.drawPieChart(); // 在下一个tick中调用绘制图表的方法
-          });
-        })
-        .catch(error => {
-          console.error('Error fetching gender data:', error);
-        })
-        .finally(() => {
-          this.loading = false;
-        });
-    },
-
-
-    drawPieChart() {
-      const chartDom = this.$refs.pieChart // 获取图表容器
-      const myChart = echarts.init(chartDom) // 初始化图表
-      const option = {
-        title: {
-          text: 'Gender Distribution'
-        },
-        tooltip: {
-          trigger: 'item',
-          formatter: '{a} <br/>{b} : {c} ({d}%)'
-        },
-        series: [
-          {
-            name: 'Gender',
-            type: 'pie',
-            radius: '55%',
-            data: [
-              { value: this.genderData[0], name: 'Male' }, // 使用性别数据绘制饼图
-              { value: this.genderData[1], name: 'Female' },
-            ]
-          }
-        ]
-      }
-      myChart.setOption(option) // 设置图表配置选项
-    }
-  },
-
-
     // 取消按钮
     cancel() {
       this.open = false;
@@ -368,5 +296,6 @@ export default {
         ...this.queryParams
       }, `portrait_${new Date().getTime()}.xlsx`)
     }
+  }
 };
 </script>
