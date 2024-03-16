@@ -51,7 +51,7 @@ export function listPortrait(query) {
 //   })
 // }
 
-export function findBy() {
+export function findPortrait() {
   return request({
     url:'/tags/portrait/datalist',
     method: 'get'

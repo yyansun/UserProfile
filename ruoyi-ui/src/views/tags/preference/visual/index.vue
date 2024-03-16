@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import {findBy} from "@/api/tags/preference";
+import {findPreference} from "@/api/tags/preference";
 import * as echarts from "echarts";
 
 export default {
@@ -83,7 +83,7 @@ export default {
   methods: {
     fetchData() {
       this.loading = true;
-      findBy()
+      findPreference()
         .then(response => {
           console.log('==================Data:', response.data);
           this.usgData = response.data.usgList;

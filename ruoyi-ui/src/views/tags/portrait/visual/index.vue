@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import {findBy} from "@/api/tags/portrait";
+import {findPortrait} from "@/api/tags/portrait";
 import * as echarts from "echarts";
 
 export default {
@@ -82,7 +82,7 @@ export default {
 
     fetchData() {
       this.loading = true;
-      findBy()
+      findPortrait()
         .then(response => {
           console.log('==================Data:', response.data);
           this.genderData = response.data.genderList;
