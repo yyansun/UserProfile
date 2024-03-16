@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.tags.mapper.TblUserProfileMapper">
+    
+    <resultMap type="TblUserProfile" id="TblUserProfileResult">
+        <result property="userId"    column="userId"    />
+        <result property="gender"    column="gender"    />
+        <result property="job"    column="job"    />
+        <result property="nationality"    column="nationality"    />
+        <result property="marriage"    column="marriage"    />
+        <result property="politicalFace"    column="politicalFace"    />
+        <result property="isBlacklist"    column="is_blackList"    />
+        <result property="rfm"    column="rfm"    />
+        <result property="rfe"    column="rfe"    />
+        <result property="psm"    column="psm"    />
+        <result property="usg"    column="usg"    />
+        <result property="ageRange"    column="ageRange"    />
+        <result property="buyFrequency"    column="buyFrequency"    />
+        <result property="consumptionCycle"    column="consumptionCycle"    />
+        <result property="exchangeRate"    column="exchangeRate"    />
+        <result property="loginCycle"    column="loginCycle"    />
+        <result property="logFrequency"    column="logFrequency"    />
+        <result property="logTimeSlot"    column="logTimeSlot"    />
+        <result property="maxOrderRange"    column="maxOrderRange"    />
+        <result property="payType"    column="payType"    />
+        <result property="returnRate"    column="returnRate"    />
+        <result property="unitPriceRange"    column="unitPriceRange"    />
+        <result property="BpTop1"    column="BpTop1"    />
+        <result property="BpTop2"    column="BpTop2"    />
+        <result property="BpTop3"    column="BpTop3"    />
+        <result property="BpTop4"    column="BpTop4"    />
+        <result property="BpTop5"    column="BpTop5"    />
+    </resultMap>
+
+    <sql id="selectTblUserProfileVo">
+        select userId, gender, job, nationality, marriage, politicalFace, is_blackList, rfm, rfe, psm, usg, ageRange, buyFrequency, consumptionCycle, exchangeRate, loginCycle, logFrequency, logTimeSlot, maxOrderRange, payType, returnRate, unitPriceRange, BpTop1, BpTop2, BpTop3, BpTop4, BpTop5 from tbl_user_profile
+    </sql>
+
+    <select id="selectTblUserProfileList" parameterType="TblUserProfile" resultMap="TblUserProfileResult">
+        <include refid="selectTblUserProfileVo"/>
+        <where>  
+            <if test="userId != null "> and userId = #{userId}</if>
+        </where>
+    </select>
+    
+    <select id="selectTblUserProfileByUserId" parameterType="Long" resultMap="TblUserProfileResult">
+        <include refid="selectTblUserProfileVo"/>
+        where userId = #{userId}
+    </select>
+        
+    <insert id="insertTblUserProfile" parameterType="TblUserProfile">
+        insert into tbl_user_profile
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userId != null">userId,</if>
+            <if test="gender != null">gender,</if>
+            <if test="job != null">job,</if>
+            <if test="nationality != null">nationality,</if>
+            <if test="marriage != null">marriage,</if>
+            <if test="politicalFace != null">politicalFace,</if>
+            <if test="isBlacklist != null">is_blackList,</if>
+            <if test="rfm != null">rfm,</if>
+            <if test="rfe != null">rfe,</if>
+            <if test="psm != null">psm,</if>
+            <if test="usg != null">usg,</if>
+            <if test="ageRange != null">ageRange,</if>
+            <if test="buyFrequency != null">buyFrequency,</if>
+            <if test="consumptionCycle != null">consumptionCycle,</if>
+            <if test="exchangeRate != null">exchangeRate,</if>
+            <if test="loginCycle != null">loginCycle,</if>
+            <if test="logFrequency != null">logFrequency,</if>
+            <if test="logTimeSlot != null">logTimeSlot,</if>
+            <if test="maxOrderRange != null">maxOrderRange,</if>
+            <if test="payType != null">payType,</if>
+            <if test="returnRate != null">returnRate,</if>
+            <if test="unitPriceRange != null">unitPriceRange,</if>
+            <if test="BpTop1 != null">BpTop1,</if>
+            <if test="BpTop2 != null">BpTop2,</if>
+            <if test="BpTop3 != null">BpTop3,</if>
+            <if test="BpTop4 != null">BpTop4,</if>
+            <if test="BpTop5 != null">BpTop5,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userId != null">#{userId},</if>
+            <if test="gender != null">#{gender},</if>
+            <if test="job != null">#{job},</if>
+            <if test="nationality != null">#{nationality},</if>
+            <if test="marriage != null">#{marriage},</if>
+            <if test="politicalFace != null">#{politicalFace},</if>
+            <if test="isBlacklist != null">#{isBlacklist},</if>
+            <if test="rfm != null">#{rfm},</if>
+            <if test="rfe != null">#{rfe},</if>
+            <if test="psm != null">#{psm},</if>
+            <if test="usg != null">#{usg},</if>
+            <if test="ageRange != null">#{ageRange},</if>
+            <if test="buyFrequency != null">#{buyFrequency},</if>
+            <if test="consumptionCycle != null">#{consumptionCycle},</if>
+            <if test="exchangeRate != null">#{exchangeRate},</if>
+            <if test="loginCycle != null">#{loginCycle},</if>
+            <if test="logFrequency != null">#{logFrequency},</if>
+            <if test="logTimeSlot != null">#{logTimeSlot},</if>
+            <if test="maxOrderRange != null">#{maxOrderRange},</if>
+            <if test="payType != null">#{payType},</if>
+            <if test="returnRate != null">#{returnRate},</if>
+            <if test="unitPriceRange != null">#{unitPriceRange},</if>
+            <if test="BpTop1 != null">#{BpTop1},</if>
+            <if test="BpTop2 != null">#{BpTop2},</if>
+            <if test="BpTop3 != null">#{BpTop3},</if>
+            <if test="BpTop4 != null">#{BpTop4},</if>
+            <if test="BpTop5 != null">#{BpTop5},</if>
+         </trim>
+    </insert>
+
+    <update id="updateTblUserProfile" parameterType="TblUserProfile">
+        update tbl_user_profile
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="gender != null">gender = #{gender},</if>
+            <if test="job != null">job = #{job},</if>
+            <if test="nationality != null">nationality = #{nationality},</if>
+            <if test="marriage != null">marriage = #{marriage},</if>
+            <if test="politicalFace != null">politicalFace = #{politicalFace},</if>
+            <if test="isBlacklist != null">is_blackList = #{isBlacklist},</if>
+            <if test="rfm != null">rfm = #{rfm},</if>
+            <if test="rfe != null">rfe = #{rfe},</if>
+            <if test="psm != null">psm = #{psm},</if>
+            <if test="usg != null">usg = #{usg},</if>
+            <if test="ageRange != null">ageRange = #{ageRange},</if>
+            <if test="buyFrequency != null">buyFrequency = #{buyFrequency},</if>
+            <if test="consumptionCycle != null">consumptionCycle = #{consumptionCycle},</if>
+            <if test="exchangeRate != null">exchangeRate = #{exchangeRate},</if>
+            <if test="loginCycle != null">loginCycle = #{loginCycle},</if>
+            <if test="logFrequency != null">logFrequency = #{logFrequency},</if>
+            <if test="logTimeSlot != null">logTimeSlot = #{logTimeSlot},</if>
+            <if test="maxOrderRange != null">maxOrderRange = #{maxOrderRange},</if>
+            <if test="payType != null">payType = #{payType},</if>
+            <if test="returnRate != null">returnRate = #{returnRate},</if>
+            <if test="unitPriceRange != null">unitPriceRange = #{unitPriceRange},</if>
+            <if test="BpTop1 != null">BpTop1 = #{BpTop1},</if>
+            <if test="BpTop2 != null">BpTop2 = #{BpTop2},</if>
+            <if test="BpTop3 != null">BpTop3 = #{BpTop3},</if>
+            <if test="BpTop4 != null">BpTop4 = #{BpTop4},</if>
+            <if test="BpTop5 != null">BpTop5 = #{BpTop5},</if>
+        </trim>
+        where userId = #{userId}
+    </update>
+
+    <delete id="deleteTblUserProfileByUserId" parameterType="Long">
+        delete from tbl_user_profile where userId = #{userId}
+    </delete>
+
+    <delete id="deleteTblUserProfileByUserIds" parameterType="String">
+        delete from tbl_user_profile where userId in 
+        <foreach item="userId" collection="array" open="(" separator="," close=")">
+            #{userId}
+        </foreach>
+    </delete>
+</mapper>
