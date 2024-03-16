@@ -1,5 +1,7 @@
 <template>
   <div class="app-container">
+    <div class="all">
+
       <el-col class="col1">
         <el-row>
            <div slot="header">用户性别分布</div>
@@ -28,6 +30,7 @@
         <div ref="timeSlotChart" class="card-img" style="width: 450px; height: 300px;"></div>
       </el-row>
     </el-col>
+    </div>
   </div>
 </template>
 
@@ -233,7 +236,7 @@ export default {
 </script>
 
 <style>
-  .app-container {
+  .all {
     background-image: url("../assets/images/index_bg.svg");
     background-size: 25%; /* 不对图片进行缩放 */
     background-position: center; /* 将背景图片放置在视图的中间 */
