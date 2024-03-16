@@ -131,7 +131,7 @@ export default {
     },
 
     drawCharts2() {
-      this.drawBarChart('rfmChart', '用户消费能力', this.rfmData, ['高', '中上', '中', '中下', '下']);
+      this.drawBarChart('rfmChart', '用户消费能力', this.rfmData, ['高', '中上', '中', '中下', '低']);
     },
 
     drawCharts3() {
@@ -195,9 +195,73 @@ export default {
             }
           }
         },
+        grid: {
+          right:100
+        },
+
         series: [{
           data: data,
-          type: 'bar'
+          type: 'bar',
+          itemStyle: {
+            // 通过判断索引或者名称来设置颜色
+            color: function(params) {
+              if (params.name === '男') {
+                return '#5470C6'; // 如果是男性，设置为蓝色
+              } else if (params.name === '女'){
+                return '#9FE080';
+              } else if (params.name === '教师'){
+                return '#3BA272';
+              } else if (params.name === '军人'){
+                return '#5C7BD9';
+              } else if (params.name === '警察'){
+                return '#7ED3F4';
+              } else if (params.name === '学生'){
+                return '#FFDC60';
+              } else if (params.name === '白领'){
+                return '#9FE080';
+              } else if (params.name === '公务员'){
+                return '#FF7A7A';
+              }  else if (params.name === '70后'){
+                return '#FFDC60';
+              } else if (params.name === '80后'){
+                return '#9FE080';
+              } else if (params.name === '90后'){
+                return '#FF7A7A';
+              } else if (params.name === '00后'){
+                return '#5C7BD9';
+              } else if (params.name === '高') {
+                return '#7ED3F4';
+              } else if (params.name === '中上'){
+                return '#FFDC60';
+              } else if (params.name === '中'){
+                return '#9FE080';
+              } else if (params.name === '中下'){
+                return '#5C7BD9';
+              } else if (params.name === '低'){
+                return '#FF7A7A';
+              } else if (params.name === '非常活跃'){
+                return '#5C7BD9';
+              } else if (params.name === '活跃'){
+                return '#9FE080';
+              } else if (params.name === '不活跃'){
+                return '#FFDC60';
+              } else if (params.name === '非常不活跃'){
+                return '#FF7A7A';
+              } else if (params.name === '早晨'){
+                return '#5C7BD9';
+              } else if (params.name === '上午'){
+                return '#9FE080';
+              } else if (params.name === '中午'){
+                return '#FFDC60';
+              } else if (params.name === '下午'){
+                return '#FF7A7A';
+              } else if (params.name === '傍晚'){
+                return '#7ED3F4';
+              } else if (params.name === '凌晨'){
+                return '#3BA272';
+              }
+            }
+          }
         }]
       };
       myChart.setOption(option);
@@ -237,7 +301,7 @@ export default {
 
 <style>
   .all {
-    background-image: url("../assets/images/index_bg.svg");
+    background-image: url("../assets/images/multitalk.svg");
     background-size: 25%; /* 不对图片进行缩放 */
     background-position: center; /* 将背景图片放置在视图的中间 */
     background-repeat: no-repeat;

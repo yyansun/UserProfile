@@ -127,12 +127,16 @@ export default {
           trigger: 'item',
           formatter: '{a} <br/>{b} : {c} ({d}%)'
         },
+        // legend:{
+        //   left:"20%"
+        // },
         series: [
           {
             name: chartTitle,
             type: 'pie',
             radius: '55%',
-            data: labels.map((label, index) => ({ value: data[index], name: label }))
+            data: labels.map((label, index) => ({ value: data[index], name: label })),
+            center:['50%','50%']
           }
         ]
       };
