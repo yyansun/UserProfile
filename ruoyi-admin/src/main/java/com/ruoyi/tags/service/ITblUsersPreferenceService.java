@@ -27,6 +27,29 @@ public interface ITblUsersPreferenceService
      */
     public List<TblUsersPreference> selectTblUsersPreferenceList(TblUsersPreference tblUsersPreference);
 
+   public List<Integer> findByLoginCycle();
+
+    public List<Float> findByFrequency();
+
+    public List<Integer> findByUsg();
+
+    public List<Integer> findByRfe();
+
+    public List<Integer> findByFreqValue();
+
+    public List<Integer> findByTimeSlot();
+
+    public List<String> findBytop1();
+
+    public List<String> findBytop2();
+
+    public List<String> findBytop3();
+
+    public List<String> findBytop4();
+
+    public List<String> findBytop5();
+
+
     /**
      * 新增兴趣特征
      * 
@@ -58,4 +81,6 @@ public interface ITblUsersPreferenceService
      * @return 结果
      */
     public int deleteTblUsersPreferenceById(Integer id);
+
+
 }

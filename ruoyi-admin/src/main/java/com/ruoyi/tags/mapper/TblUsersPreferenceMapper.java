@@ -28,6 +28,20 @@ public interface TblUsersPreferenceMapper
     public List<TblUsersPreference> selectTblUsersPreferenceList(TblUsersPreference tblUsersPreference);
 
     /**
+     * 查询各类标签数据占比
+     */
+    public List<Integer> findByLoginCycle( );
+    public List<Integer> findByFreqValue( );
+    public List<Integer> findByUsg( );
+    public List<Integer> findByRfe( );
+    public List<Integer> findByTimeSlot( );
+    public List<Float> findByFrequency( );
+    public List<String> findByTop1( );
+    public List<String> findByTop2( );
+    public List<String> findByTop3( );
+    public List<String> findByTop4( );
+    public List<String> findByTop5( );
+    /**
      * 新增兴趣特征
      * 
      * @param tblUsersPreference 兴趣特征

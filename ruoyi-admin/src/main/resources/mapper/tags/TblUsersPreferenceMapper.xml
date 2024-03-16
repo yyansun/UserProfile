@@ -40,6 +40,50 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <include refid="selectTblUsersPreferenceVo"/>
         where id = #{id}
     </select>
+<!--    最近登录-->
+    <select id="findByLoginCycle" parameterType="java.util.List">
+        SELECT count(*) from tbl_users_preference group by loginCycle;
+    </select>
+<!--    访问次数-->
+    <select id="findByFrequency" parameterType="java.util.List">
+        SELECT frequency from tbl_users_preference;
+    </select>
+<!--    访问频率-->
+    <select id="findByFreqValue" parameterType="java.util.List">
+        SELECT count(*) from tbl_users_preference group by freq_value;
+    </select>
+<!--    浏览时段-->
+    <select id="findByTimeSlot" parameterType="java.util.List">
+        SELECT count(*) from tbl_users_preference group by timeSlot;
+    </select>
+<!--    购物性别-->
+    <select id="findByUsg" parameterType="java.util.List">
+        SELECT count(*) from tbl_users_preference group by usg;
+    </select>
+<!--    活跃度-->
+    <select id="findByRfe" parameterType="java.util.List">
+        SELECT count(*) from tbl_users_preference group by rfe;
+    </select>
+<!--    top1-->
+    <select id="findByTop1" parameterType="java.util.List">
+        SELECT count(*) from tbl_users_preference group by top1;
+    </select>
+<!--    top2-->
+    <select id="findByTop2" parameterType="java.util.List">
+        SELECT count(*) from tbl_users_preference group by top2;
+    </select>
+<!--    top3-->
+    <select id="findByTop3" parameterType="java.util.List">
+        SELECT count(*) from tbl_users_preference group by top3;
+    </select>
+<!--    top4-->
+    <select id="findByTop4" parameterType="java.util.List">
+        SELECT count(*) from tbl_users_preference group by top4;
+    </select>
+<!--    top2-->
+    <select id="findByTop5" parameterType="java.util.List">
+        SELECT count(*) from tbl_users_preference group by top5;
+    </select>
         
     <insert id="insertTblUsersPreference" parameterType="TblUsersPreference" useGeneratedKeys="true" keyProperty="id">
         insert into tbl_users_preference
