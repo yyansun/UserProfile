@@ -34,6 +34,7 @@ public class TblUserProfileController extends BaseController
     @Autowired
     private ITblUserProfileService tblUserProfileService;
 
+
     /**
      * 查询单人画像列表
      */
@@ -66,6 +67,7 @@ public class TblUserProfileController extends BaseController
     @GetMapping(value = "/{userId}")
     public AjaxResult getInfo(@PathVariable("userId") Long userId)
     {
+
         return success(tblUserProfileService.selectTblUserProfileByUserId(userId));
     }
 
